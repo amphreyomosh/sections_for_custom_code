@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse Parallax Hero - 3D Effect</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        overflow-x: hidden;
+        background: #000;
+      }
+
+      .hero-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1500px;
+        transform-style: preserve-3d;
+      }
+
+      .parallax-layer {
+        position: absolute;
+        inset: -400px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: transform 0.08s ease-out;
+        will-change: transform;
+      }
+
+      /* Deep background - darkest forest */
+      .layer-1 {
+        background-image: url("https://images.unsplash.com/photo-1511497584788-876760111969?w=2000&q=90");
+        filter: brightness(0.3) saturate(0.8);
+      }
+
+      /* Mid-back layer */
+      .layer-2 {
+        background-image: url("https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=2000&q=90");
+        filter: brightness(0.4) saturate(1.1);
+        opacity: 0.8;
+      }
+
+      /* Mid-front layer */
+      .layer-3 {
+        background-image: url("https://images.unsplash.com/photo-1448375240586-882707db888b?w=2000&q=90");
+        filter: brightness(0.5) saturate(1.2);
+        opacity: 0.7;
+      }
+
+      /* Fog/mist layer */
+      .layer-4 {
+        background: radial-gradient(
+          ellipse at center,
+          rgba(100, 120, 100, 0.3) 0%,
+          transparent 70%
+        );
+        opacity: 0.6;
+      }
+
+      /* Front trees silhouette */
+      .layer-5 {
+        background-image: url("https://images.unsplash.com/photo-1511497584788-876760111969?w=2000&q=90");
+        filter: brightness(0.25);
+        opacity: 0.4;
+      }
+
+      .content-wrapper {
+        position: relative;
+        z-index: 100;
+        text-align: center;
+        max-width: 1200px;
+        padding: 0 20px;
+        transform-style: preserve-3d;
+        transition: transform 0.08s ease-out;
+      }
+
+      .bird-icon {
+        width: 130px;
+        height: 130px;
+        margin: 0 auto 30px;
+        filter: drop-shadow(0 10px 40px rgba(29, 155, 240, 0.6));
+        animation: none;
+        transform-style: preserve-3d;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) translateZ(10px);
+        }
+        50% {
+          transform: translateY(-15px) translateZ(10px);
+        }
+      }
+
+      .bird-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 6.2vw, 6.5rem);
+        line-height: 1.1;
+        color: #ffffff;
+        font-weight: 900;
+        margin-bottom: 20px;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9),
+          0 0 60px rgba(29, 155, 240, 0.4);
+        letter-spacing: -0.02em;
+        transform: translateZ(150px);
+      }
+
+      .subtitle {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        color: rgba(255, 255, 255, 0.95);
+        font-style: italic;
+        margin-bottom: 40px;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
+        transform: translateZ(80px);
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 18px 50px;
+        background: rgba(0, 0, 0, 0.3);
+        color: white;
+        text-decoration: none;
+        border-radius: 100px;
+        border: 3px solid rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        transform: translateZ(120px);
+      }
+
+      .cta-button:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 1);
+        transform: translateZ(120px) translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .floating-element {
+        position: absolute;
+        opacity: 0.4;
+        font-size: 2.5rem;
+        animation: floatUpRotate 14s linear infinite;
+        z-index: 50;
+      }
+
+      @keyframes floatUpRotate {
+        0% {
+          transform: translateY(0) rotate(0deg) translateZ(350px);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.5;
+        }
+        90% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translateY(-120vh) rotate(360deg) translateZ(350px);
+          opacity: 0;
+        }
+      }
+
+      .leaf1 {
+        top: 100%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .leaf2 {
+        top: 100%;
+        right: 10%;
+        animation-delay: 2s;
+      }
+
+      .leaf3 {
+        top: 100%;
+        left: 35%;
+        animation-delay: 4s;
+      }
+
+      .leaf4 {
+        top: 100%;
+        right: 35%;
+        animation-delay: 6s;
+      }
+
+      .leaf5 {
+        top: 100%;
+        left: 60%;
+        animation-delay: 8s;
+      }
+
+      .top-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 30px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.5);
+      }
+
+      /* Vignette overlay */
+      .vignette {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          transparent 20%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+        pointer-events: none;
+        z-index: 99;
+      }
+
+      /* Particle lights */
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        animation: particleFloat 20s infinite;
+        z-index: 80;
+      }
+
+      @keyframes particleFloat {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.8;
+        }
+        90% {
+          opacity: 0.8;
+        }
+        100% {
+          transform: translateY(-100vh) translateX(50px);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-nav">
+      <div class="logo"></div>
+    </div>
+
+    <div class="hero-container" id="heroContainer">
+      <!-- Multiple parallax layers -->
+      <div class="parallax-layer layer-1" data-depth="0.2"></div>
+      <div class="parallax-layer layer-2" data-depth="0.4"></div>
+      <div class="parallax-layer layer-3" data-depth="0.7"></div>
+      <div class="parallax-layer layer-4" data-depth="0.5"></div>
+      <div class="parallax-layer layer-5" data-depth="1.2"></div>
+
+      <!-- Vignette overlay -->
+      <div class="vignette"></div>
+
+      <!-- Floating leaves -->
+      <div class="floating-element leaf1">🍃</div>
+      <div class="floating-element leaf2">🍃</div>
+      <div class="floating-element leaf3">🍂</div>
+      <div class="floating-element leaf4">🍂</div>
+      <div class="floating-element leaf5">🍃</div>
+
+      <!-- Main content -->
+      <div class="content-wrapper" id="content" data-depth="0.25">
+        <div class="bird-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 204">
+            <path
+              fill="#1d9bf0"
+              d="M221.95 51.29c.15 2.17.15 4.34.15 6.53 0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07 7.57 1.46 15.37 1.16 22.8-.87-23.56-4.76-40.51-25.46-40.51-49.5v-.64c7.02 3.91 14.88 6.08 22.92 6.32C11.58 63.31 4.74 33.79 18.14 10.71c25.64 31.55 63.47 50.73 104.08 52.76-4.07-17.54 1.49-35.92 14.61-48.25 20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26-3.77 11.69-11.66 21.62-22.2 27.93 10.01-1.18 19.79-3.86 29-7.95-6.78 10.16-15.32 19.01-25.2 26.16z"
+            />
+            <path
+              fill="#4ade80"
+              d="M180 40c10-5 15-15 12-25-15 8-25 18-28 30 5-2 11-3 16-5z"
+            />
+          </svg>
+        </div>
+
+        <h1>SAVE RARE BIRDS IN THE FOREST</h1>
+        <p class="subtitle">
+          Creating a beautiful 3D website with a mouse parallax
+        </p>
+
+        <a href="#" class="cta-button">Start Building Sites</a>
+      </div>
+    </div>
+
+    <script>
+      const container = document.getElementById("heroContainer");
+      const parallaxLayers = document.querySelectorAll("[data-depth]");
+
+      let mouseX = 0;
+      let mouseY = 0;
+
+      // Track mouse movement with immediate response
+      document.addEventListener("mousemove", (e) => {
+        // Use full viewport for calculation
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+
+        // Apply immediately for fast response
+        updateParallax();
+      });
+
+      function updateParallax() {
+        parallaxLayers.forEach((layer) => {
+          const depth = parseFloat(layer.dataset.depth);
+
+          // Amplified movement - extended range for corners
+          const moveX = mouseX * depth * 180;
+          const moveY = mouseY * depth * 180;
+
+          if (layer.classList.contains("content-wrapper")) {
+            // Content gets dramatic 3D rotation
+            layer.style.transform = `
+                        translateX(${moveX}px) 
+                        translateY(${moveY}px) 
+                        rotateY(${mouseX * 20}deg) 
+                        rotateX(${-mouseY * 20}deg)
+                        translateZ(${depth * 100}px)
+                    `;
+          } else {
+            // Background layers move dramatically
+            layer.style.transform = `
+                        translateX(${moveX}px) 
+                        translateY(${moveY}px)
+                        scale(${1 + depth * 0.2})
+                    `;
+          }
+        });
+      }
+
+      // Reset on mouse leave
+      document.addEventListener("mouseleave", () => {
+        mouseX = 0;
+        mouseY = 0;
+        updateParallax();
+      });
+
+      // Create floating particles
+      function createParticles() {
+        for (let i = 0; i < 15; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = "100%";
+          particle.style.animationDelay = Math.random() * 20 + "s";
+          container.appendChild(particle);
+        }
+      }
+
+      createParticles();
+    </script>
+  </body>
+</html>

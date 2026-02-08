@@ -1,0 +1,242 @@
+<!-- PREMIUM FOOTER -->
+<footer class="murecar-footer">
+  <div class="murecar-container footer-grid">
+    <!-- BRAND / ABOUT -->
+    <div class="footer-brand">
+      <img
+        src="https://www.murecar.com/wp-content/uploads/2025/12/cropped-MURECAR-LOGO-Original-scaled-1-2048x927.png"
+        alt="Murecar Logo"
+      />
+      <p>
+        Your trusted partner for premium car rentals and professional logistics
+        services, delivering comfort, reliability, and excellence.
+      </p>
+
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="footer-links">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#">Car Rental</a></li>
+        <li><a href="#">Corporate Fleet</a></li>
+        <li><a href="#">Airport Transfers</a></li>
+        <li><a href="#">Long-term Leasing</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACT & CTA -->
+    <div class="footer-contact">
+      <h4>Contact</h4>
+
+      <p><i class="fas fa-phone"></i> +254 123 456 789</p>
+      <p><i class="fas fa-envelope"></i> info@murecar.com</p>
+      <p><i class="fas fa-location-dot"></i> 123 Logistic Ave, City, Country</p>
+
+      <a href="#booking" class="footer-book-btn">
+        Book a Vehicle
+        <span></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    <div class="murecar-container">
+      <p>
+        © <span id="current-year"></span> Murecar Logistics. All rights
+        reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+<style>
+  /* ========================================
+   PREMIUM FOOTER (THEME SAFE OVERRIDE)
+======================================== */
+  .murecar-footer {
+    background: #0e0e0e !important;
+    color: #cfcfcf !important;
+    padding-top: 80px !important;
+    font-family: var(--murecar-font-body) !important;
+  }
+
+  /* GRID */
+  .murecar-footer .footer-grid {
+    display: grid !important;
+    grid-template-columns: 1.5fr 1fr 1fr 1.3fr !important;
+    gap: 48px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* ================= BRAND ================= */
+  .murecar-footer .footer-brand img {
+    height: 46px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .murecar-footer .footer-brand p {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    color: #b5b5b5 !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* ================= SOCIALS ================= */
+  .murecar-footer .footer-socials {
+    display: flex !important;
+    gap: 14px !important;
+  }
+
+  .murecar-footer .footer-socials a {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ccc !important;
+    transition: var(--murecar-transition) !important;
+  }
+
+  .murecar-footer .footer-socials a:hover {
+    background: var(--murecar-primary) !important;
+    color: #fff !important;
+    transform: translateY(-3px) !important;
+  }
+
+  /* ================= HEADINGS ================= */
+  .murecar-footer .footer-links h4,
+  .murecar-footer .footer-contact h4 {
+    font-family: var(--murecar-font-display) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    margin-bottom: 12px !important;
+    line-height: 1.2 !important;
+    color: #ffffff !important;
+  }
+
+  /* ================= LINK LISTS ================= */
+  .murecar-footer .footer-links ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .murecar-footer .footer-links ul li {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.25 !important;
+  }
+
+  .murecar-footer .footer-links ul li a {
+    display: inline-block !important;
+    color: #b5b5b5 !important;
+    font-size: 14px !important;
+    line-height: 1.25 !important;
+    padding: 2px 0 !important;
+    transition: var(--murecar-transition) !important;
+  }
+
+  .murecar-footer .footer-links ul li a:hover {
+    color: var(--murecar-primary) !important;
+    padding-left: 4px !important;
+  }
+
+  /* ================= CONTACT ================= */
+  .murecar-footer .footer-contact p {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  .murecar-footer .footer-contact i {
+    color: var(--murecar-primary) !important;
+  }
+
+  /* ================= CTA BUTTON ================= */
+  .murecar-footer .footer-book-btn {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 14px !important;
+    padding: 14px 34px !important;
+    border-radius: 0px !important;
+    background: var(--murecar-primary) !important;
+    color: #fff !important;
+    font-family: var(--murecar-font-display) !important;
+    font-size: 14px !important;
+    overflow: hidden !important;
+  }
+
+  .murecar-footer .footer-book-btn span {
+    position: absolute !important;
+    inset: 0 !important;
+    background: var(--murecar-primary-dark) !important;
+    transform: scaleX(0) !important;
+    transform-origin: left !important;
+    transition: transform 0.4s ease !important;
+    z-index: -1 !important;
+  }
+
+  .murecar-footer .footer-book-btn:hover span {
+    transform: scaleX(1) !important;
+  }
+
+  /* ================= BOTTOM BAR ================= */
+  .murecar-footer .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 20px 0 !important;
+  }
+
+  .murecar-footer .footer-bottom p {
+    font-size: 14px !important;
+    text-align: center !important;
+    color: #999 !important;
+    margin: 0 !important;
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 992px) {
+    .murecar-footer .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .murecar-footer .footer-grid {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+    }
+  }
+</style>
+<script>
+  // Get the current year
+  const year = new Date().getFullYear();
+  // Set it in the footer
+  document.getElementById("current-year").textContent = year;
+</script>

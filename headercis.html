@@ -1,0 +1,778 @@
+<!-- Event snippet for REQUEST TOUR BUTTON conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof url != "undefined") {
+        window.location = url;
+      }
+    };
+    gtag("event", "conversion", {
+      send_to: "AW-17551448733/5Hj4CP3duK4bEJ21l7FB",
+      event_callback: callback,
+    });
+    return false;
+  }
+</script>
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-5NC8BNGX");
+</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript
+  ><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-5NC8BNGX"
+    height="0"
+    width="0"
+    style="display: none; visibility: hidden"
+  ></iframe
+></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Optional: load Poppins properly (you’re using font-family: poppins) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+  }
+
+  body.mobile-menu-open {
+    overflow: hidden;
+  }
+
+  .main-header {
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 15px 0;
+  }
+
+  .header-container {
+    max-width: 1400px;
+    margin: 10px auto 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 80px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+  }
+
+  .main-nav {
+    margin-left: 60px;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+  }
+
+  .nav-link {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 10px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #2f4a8e;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding: 10px 0;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #f5f5f5;
+  }
+
+  .header-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .tour-btn-s {
+    background-color: #2f4a8e;
+    color: #ffffff;
+    padding: 15px 30px !important;
+    border: none;
+    border-radius: 4px !important;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px !important;
+    transition: all 0.3s ease;
+  }
+
+  .tour-btn-s:hover {
+    background-color: #fff !important;
+    color: #2f4a8e !important;
+    border: 1px solid #2f4a8e !important;
+    transition: all 0.6s ease;
+  }
+  /* Make Request a Tour look like dropdown items */
+  .dropdown-menu .tour-btn-s {
+    background: none;
+    padding: 0;
+    border: none;
+  }
+
+  /* Style the anchor like other dropdown links */
+  .dropdown-menu .tour-btn-s a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .tour-nav-btn .tour-btn-s {
+    background-color: #2f4a8e;
+    color: #fff;
+  }
+  .tour-nav-btn .tour-btn-s:hover {
+    color: #2f4a8e;
+    background-color: #fff;
+  }
+
+  .btn-search {
+    background-color: #2f4a8e;
+    border: none;
+    padding: 14px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-search:hover {
+    background-color: #fff !important;
+    border: 1px solid #2f4a8e !important;
+  }
+
+  .btn-search svg {
+    stroke: white;
+    width: 18px;
+    height: 18px;
+  }
+
+  .btn-search:hover svg {
+    stroke: #2f4a8e;
+  }
+
+  /* Modern Three-Line Hamburger Menu */
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hamburger-container {
+    position: relative;
+    width: 28px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hamburger-line {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #2f4a8e;
+    border-radius: 3px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
+  }
+
+  .hamburger-line:nth-child(1) {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  .hamburger-line:nth-child(2) {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  .hamburger-line:nth-child(3) {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  .mobile-menu-open .hamburger-line:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+  }
+
+  .mobile-menu-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .mobile-menu-open .hamburger-line:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+  }
+
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-menu-container {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 420px;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-left: 1px solid rgba(47, 74, 142, 0.1);
+  }
+
+  .mobile-menu-container.active {
+    right: 0;
+    transform: translateX(0);
+  }
+
+  .mobile-menu-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(47, 74, 142, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(5px);
+  }
+
+  .mobile-menu-close {
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    color: #2f4a8e;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav {
+    padding: 20px 0;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 25px;
+    color: #333;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(47, 74, 142, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mobile-nav-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(47, 74, 142, 0.1),
+      rgba(47, 74, 142, 0.05)
+    );
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+  }
+
+  .mobile-nav-link:hover::before {
+    width: 100%;
+  }
+
+  .mobile-nav-link:hover {
+    color: #2f4a8e;
+    transform: translateX(8px);
+    padding-left: 33px;
+  }
+
+  .mobile-nav-link .icon {
+    transition: transform 0.3s ease;
+    font-size: 14px;
+    color: #2f4a8e;
+  }
+
+  .mobile-dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(
+      135deg,
+      rgba(47, 74, 142, 0.05),
+      rgba(47, 74, 142, 0.02)
+    );
+    backdrop-filter: blur(5px);
+  }
+
+  .mobile-dropdown.active .mobile-dropdown-menu {
+    max-height: 400px;
+  }
+
+  .mobile-dropdown.active .mobile-nav-link .icon {
+    transform: rotate(90deg);
+  }
+
+  .mobile-dropdown-menu a {
+    display: block;
+    padding: 15px 45px;
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(47, 74, 142, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .mobile-dropdown-menu a::before {
+    content: "";
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #2f4a8e;
+    border-radius: 50%;
+    transform: translateY(-50%) scale(0);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-dropdown-menu a:hover::before {
+    transform: translateY(-50%) scale(1);
+  }
+
+  .mobile-dropdown-menu a:hover {
+    color: #2f4a8e;
+    background: rgba(47, 74, 142, 0.05);
+    padding-left: 55px;
+  }
+
+  .mobile-tour-btn {
+    display: none;
+    width: calc(100% - 50px);
+    margin: 30px 25px 20px;
+    padding: 18px;
+    background: linear-gradient(135deg, #2f4a8e 0%, #1e3568 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mobile-tour-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(47, 74, 142, 0.4);
+  }
+
+  @media (max-width: 1124px) {
+    .main-nav {
+      display: none;
+    }
+
+    .tour-button-s {
+      display: none;
+    }
+
+    .mobile-tour-btn {
+      display: block;
+    }
+
+    .mobile-menu-toggle {
+      display: flex;
+    }
+
+    .mobile-menu-container {
+      padding-top: 20px;
+    }
+
+    .header-buttons {
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .logo img {
+      height: 60px !important;
+      max-width: 140px;
+      object-fit: contain;
+    }
+    .tour-nav-btn {
+      display: none;
+    }
+
+    .mobile-menu-container {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .header-container {
+      padding: 0 15px;
+    }
+
+    .btn-search {
+      padding: 10px 14px;
+    }
+
+    .btn-search svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+
+    .mobile-menu-container.active {
+      right: 0;
+    }
+  }
+
+  @media (min-width: 1125px) {
+    .nav-link .icon {
+      display: none;
+    }
+    .main-nav {
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: center;
+    }
+  }
+</style>
+
+<header class="main-header">
+  <div class="header-container">
+    <a href="/" class="logo">
+      <img
+        src="https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/0499252f-00c6-4ca9-83d2-f4b43bbcd782/logo.jpg?content-type=image%2Fjpeg"
+        alt="California International School logo display"
+      />
+    </a>
+
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li><a href="/home" class="nav-link">Home</a></li>
+        <li class="dropdown">
+          <a href="/welcome-from-the-head" class="nav-link"
+            >About <span class="icon">&gt;</span></a
+          >
+          <div class="dropdown-menu">
+            <a href="/welcome-from-the-head">Welcome from the Head</a>
+            <a href="/mission-and-vision">Mission and Vision</a>
+            <a href="/faculty-and-staff">Faculty and Staff</a>
+            <a href="/our-campus">Our Campus</a>
+            <a href="/testimonials">Testimonials</a>
+            <a href="/faq">FAQ</a>
+            <a href="/contact-us">Contact Us</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="/admissions-process" class="nav-link"
+            >Admissions <span class="icon">&gt;</span></a
+          >
+          <div class="dropdown-menu">
+            <div class="tour-btn-s">
+              <a href="https://cis-ca.client.renweb.com/oa/inquiry.cfm"
+                >Request a Tour</a
+              >
+            </div>
+            <a href="/admissions-process">Admissions Process</a>
+            <a href="/tuition">Tuition</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="/academics" class="nav-link"
+            >Academics <span class="icon">&gt;</span></a
+          >
+          <div class="dropdown-menu">
+            <a href="/academic-programs">Academic Programs</a>
+            <a href="/academic-calendar">Academic Calendar</a>
+            <a href="/curriculum">Curriculum</a>
+            <a href="/steam">STEAM</a>
+            <a href="/specialties">Specialties</a>
+            <a href="/after-school-programs">After School Programs</a>
+          </div>
+        </li>
+        <li><a href="/ib-programme" class="nav-link">IB Programme</a></li>
+        <li><a href="/events" class="nav-link">Events</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-buttons">
+      <div class="tour-nav-btn">
+        <a
+          href="https://cis-ca.client.renweb.com/oa/inquiry.cfm"
+          class="tour-btn-s"
+          >REQUEST A TOUR</a
+        >
+      </div>
+      <button
+        class="btn-search"
+        aria-label="Search"
+        onclick="window.location.href = '/searchpage'"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <div class="hamburger-container">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+<!-- Mobile Menu Container -->
+<div class="mobile-menu-container" id="mobileMenuContainer">
+  <div class="mobile-menu-header">
+    <img
+      src="https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/0499252f-00c6-4ca9-83d2-f4b43bbcd782/logo.jpg?content-type=image%2Fjpeg"
+      alt="California International School"
+      style="height: 40px"
+    />
+    <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+  </div>
+
+  <nav class="mobile-nav">
+    <ul class="mobile-nav-list">
+      <li><a href="/home" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-dropdown">
+        <a href="/welcome-from-the-head" class="mobile-nav-link"
+          >About <span class="icon">&#x27A4;</span></a
+        >
+        <div class="mobile-dropdown-menu">
+          <a href="/welcome-from-the-head">Welcome from the Head</a>
+          <a href="/mission-and-vision">Mission and Vision</a>
+          <a href="/faculty-and-staff">Faculty and Staff</a>
+          <a href="/our-campus">Our Campus</a>
+          <a href="/testimonials">Testimonials</a>
+          <a href="/faq">FAQ</a>
+          <a href="/contact-us">Contact Us</a>
+        </div>
+      </li>
+      <li class="mobile-dropdown">
+        <a href="/admissions-process" class="mobile-nav-link"
+          >Admissions <span class="icon">&#x27A4;</span></a
+        >
+        <div class="mobile-dropdown-menu">
+          <a
+            href="https://admissions-parent.renweb.com/en-us/inquire?districtCode=CIS-CA&memberId=17504&path=%2Foa%2Finquiry.cfm&code=anonymouspath"
+            >Request a Tour</a
+          >
+          <a href="/admissions-process">Admissions Process</a>
+          <a href="/tuition">Tuition</a>
+        </div>
+      </li>
+      <li class="mobile-dropdown">
+        <a href="/academics" class="mobile-nav-link"
+          >Academics <span class="icon">&#x27A4;</span></a
+        >
+        <div class="mobile-dropdown-menu">
+          <a href="/academic-programs">Academic Programs</a>
+          <a href="/academic-calendar">Academic Calendar</a>
+          <a href="/curriculum">Curriculum</a>
+          <a href="/steam">STEAM</a>
+          <a href="/specialties">Specialties</a>
+          <a href="/after-school-programs">After School Programs</a>
+        </div>
+      </li>
+      <li><a href="/ib-programme" class="mobile-nav-link">IB Programme</a></li>
+      <li><a href="/events" class="mobile-nav-link">Events</a></li>
+    </ul>
+    <div class="mobile-menu-buttons">
+      <a
+        href="https://admissions-parent.renweb.com/en-us/inquire?districtCode=CIS-CA&memberId=17504&path=%2Foa%2Finquiry.cfm&code=anonymouspath"
+        class="btn btn-tour mobile-tour-btn"
+        >REQUEST A TOUR</a
+      >
+    </div>
+  </nav>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const body = document.body;
+    const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+    const mobileMenuOverlay = document.querySelector(".mobile-menu-overlay");
+    const mobileMenuContainer = document.getElementById("mobileMenuContainer");
+    const mobileMenuClose = document.getElementById("mobileMenuClose");
+    const dropdownToggles = document.querySelectorAll(
+      ".mobile-dropdown > .mobile-nav-link",
+    );
+
+    function toggleMobileMenu() {
+      mobileMenuContainer.classList.toggle("active");
+      mobileMenuOverlay.classList.toggle("active");
+      body.classList.toggle("mobile-menu-open");
+    }
+
+    mobileMenuToggle.addEventListener("click", toggleMobileMenu);
+    mobileMenuClose.addEventListener("click", toggleMobileMenu);
+    mobileMenuOverlay.addEventListener("click", function (e) {
+      if (e.target === mobileMenuOverlay) {
+        toggleMobileMenu();
+      }
+    });
+
+    dropdownToggles.forEach((toggle) => {
+      toggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        const dropdown = toggle.parentElement;
+        const dropdownMenu = toggle.nextElementSibling;
+
+        document.querySelectorAll(".mobile-dropdown").forEach((item) => {
+          if (item !== dropdown) {
+            item.classList.remove("active");
+          }
+        });
+
+        dropdown.classList.toggle("active");
+
+        const icon = toggle.querySelector("span");
+        if (icon) {
+          icon.textContent = "\u27A4";
+          icon.style.transform = dropdown.classList.contains("active")
+            ? "rotate(90deg)"
+            : "rotate(0deg)";
+        }
+      });
+    });
+
+    function toggleMobileDropdown(element) {
+      const dropdownMenu = element.nextElementSibling;
+      const isActive = dropdownMenu.style.maxHeight;
+      dropdownMenu.style.maxHeight = isActive
+        ? null
+        : dropdownMenu.scrollHeight + "px";
+    }
+  });
+</script>

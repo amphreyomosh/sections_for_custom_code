@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Header</title>
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- GOOGLE FONTS: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- OVERLAY BACKDROP -->
+    <div class="kwetu-overlay" id="kwetuOverlay" onclick="closeMenu()"></div>
+
+    <!-- TOP BAR -->
+    <div class="kwetu-topbar">
+      <div class="kwetu-container">
+        <div class="kwetu-topbar-left">
+          <a href="tel:+254711857237"
+            ><i class="fas fa-phone-alt"></i> <span>(+254) 0711857237</span></a
+          >
+          <a href="mailto:info@kwetumarketingagency.co.ke" class="hide-mobile"
+            ><i class="fas fa-envelope"></i>
+            <span>info@kwetumarketingagency.co.ke</span></a
+          >
+        </div>
+        <div class="kwetu-topbar-right">
+          <a href="#" class="rate-card-link"
+            ><i class="fas fa-file-pdf"></i> 2025 Rate Card</a
+          >
+          <div class="kwetu-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="kwetu-header" id="kwetuHeader">
+      <div class="kwetu-container">
+        <!-- LOGO -->
+        <a href="/" class="kwetu-logo">
+          <span class="logo-icon">KM</span>
+        </a>
+
+        <!-- DESKTOP NAV -->
+        <nav class="kwetu-desktop-nav">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li class="has-dropdown">
+              <a href="#">About <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="#">Our Story</a>
+                <a href="#">Our Team</a>
+                <a href="#">Careers</a>
+                <a href="#">FAQs</a>
+              </div>
+            </li>
+            <li class="has-dropdown">
+              <a href="#">Solutions <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="#">Digital Marketing</a>
+                <a href="#">Branding</a>
+                <a href="#">Web Development</a>
+                <a href="#">SEO</a>
+              </div>
+            </li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </nav>
+
+        <!-- CTA & MOBILE TOGGLE -->
+        <div class="kwetu-actions">
+          <a href="#" class="btn-primary desktop-cta"
+            >Request a specific quote <i class="fas fa-arrow-right"></i
+          ></a>
+          <button
+            class="kwetu-toggle"
+            aria-label="Open Menu"
+            onclick="openMenu()"
+          >
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE OFF-CANVAS MENU -->
+    <div class="kwetu-mobile-menu" id="kwetuMobileMenu">
+      <div class="mobile-header">
+        <span class="mobile-logo">Menu</span>
+        <button class="close-btn" onclick="closeMenu()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="mobile-content">
+        <ul class="mobile-links">
+          <li><a href="/" onclick="closeMenu()">Home</a></li>
+
+          <li class="mobile-accordion">
+            <button class="accordion-btn">
+              About <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <a href="#">Our Story</a>
+              <a href="#">Our Team</a>
+              <a href="#">Careers</a>
+              <a href="#">FAQs</a>
+            </div>
+          </li>
+
+          <li class="mobile-accordion">
+            <button class="accordion-btn">
+              Solutions <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <a href="#">Digital Marketing</a>
+              <a href="#">Branding</a>
+              <a href="#">Web Development</a>
+              <a href="#">SEO</a>
+            </div>
+          </li>
+
+          <li><a href="#" onclick="closeMenu()">Pricing</a></li>
+          <li><a href="#" onclick="closeMenu()">Blog</a></li>
+        </ul>
+
+        <div class="mobile-footer">
+          <a href="#" class="btn-primary mobile-cta">Request a quote</a>
+          <div class="mobile-contact-info">
+            <p><i class="fas fa-phone"></i> (+254) 0711857237</p>
+            <p><i class="fas fa-envelope"></i> info@kwetu.co.ke</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      /* VARIABLES */
+      :root {
+        --primary-color: #6c35de; /* More vibrant purple */
+        --primary-dark: #5025a8;
+        --accent-color: #ffb400;
+        --text-dark: #1a1a1a;
+        --text-gray: #555;
+        --bg-light: #f8f9fa;
+        --white: #ffffff;
+        --border-color: #e5e7eb;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md:
+          0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg:
+          0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --transition: all 0.3s ease;
+        --font-main: "Outfit", sans-serif;
+      }
+
+      /* DISABLE OceanWP/Theme Defaults */
+      #site-header,
+      .oceanwp-header,
+      .oceanwp-mobile-header {
+        display: none !important;
+      }
+
+      /* RESET */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      
+
+      body {
+        font-family: var(--font-main);
+        color: var(--text-dark);
+        background-color: #fff;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+      }
+
+      body.menu-open {
+        overflow: hidden; /* Lock scroll when menu is open */
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition);
+      }
+      ul {
+        list-style: none;
+      }
+
+      .kwetu-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+        width: 100%;
+      }
+
+      /* TOP BAR */
+      .kwetu-topbar {
+        background: var(--bg-light);
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.875rem;
+        padding: 10px 0;
+        color: var(--text-gray);
+        display: block !important;
+        position: relative !important;
+        z-index: 999 !important;
+      }
+
+      .kwetu-topbar .kwetu-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .kwetu-topbar-left,
+      .kwetu-topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .kwetu-topbar i {
+        margin-right: 6px;
+        color: var(--primary-color);
+      }
+      .kwetu-topbar a:hover {
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .hide-mobile {
+          display: none;
+        }
+        .kwetu-topbar {
+          display: none; /* Optional: hide topbar on mobile for cleaner look */
+        }
+      }
+
+      /* HEADER */
+      .kwetu-header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+        padding: 16px 0;
+        transition: var(--transition);
+        display: block !important;
+      }
+
+      .kwetu-header .kwetu-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      /* LOGO */
+      .kwetu-logo {
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+      }
+
+      .logo-icon {
+        background: var(--primary-color);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
+        letter-spacing: -1px;
+      }
+
+      /* DESKTOP NAV */
+      .kwetu-desktop-nav ul {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .kwetu-desktop-nav a {
+        font-weight: 500;
+        font-size: 1rem;
+        position: relative;
+        padding: 8px 0;
+      }
+
+      .kwetu-desktop-nav a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Underline animation */
+      .kwetu-desktop-nav > ul > li > a::after {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      .kwetu-desktop-nav > ul > li > a:hover::after {
+        width: 100%;
+      }
+
+      /* DROPDOWNS */
+      .has-dropdown {
+        position: relative;
+      }
+      .has-dropdown i {
+        font-size: 0.75rem;
+        margin-left: 4px;
+        transition: transform 0.3s;
+      }
+      .has-dropdown:hover i {
+        transform: none;
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: white;
+        min-width: 220px;
+        border-radius: 12px;
+        box-shadow: var(--shadow-lg);
+        padding: 12px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease-in-out;
+        border: 1px solid var(--border-color);
+      }
+
+      .has-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .dropdown-menu a {
+        display: block;
+        padding: 10px 16px;
+        border-radius: 6px;
+        color: var(--text-dark);
+        font-weight: 400;
+      }
+
+      .dropdown-menu a:hover {
+        background: var(--bg-light);
+        color: var(--primary-color);
+      }
+      .dropdown-menu a::after {
+        display: none;
+      } /* No underline in dropdown */
+
+      /* BUTTONS */
+      .btn-primary {
+        background: var(--primary-color);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px; /* Pill shape */
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: var(--transition);
+        box-shadow: 0 4px 10px rgba(108, 53, 222, 0.2);
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 15px rgba(108, 53, 222, 0.3);
+        color: white;
+      }
+
+      /* MOBILE TOGGLE */
+      .kwetu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        flex-direction: column;
+        gap: 5px;
+        z-index: 1002;
+      }
+
+      .kwetu-toggle .bar {
+        width: 24px;
+        height: 2px;
+        background: var(--text-dark);
+        border-radius: 2px;
+        transition: var(--transition);
+      }
+
+      .kwetu-toggle:hover .bar {
+        background: var(--primary-color);
+      }
+
+      /* MOBILE MENU (CANVA STYLE) */
+      .kwetu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+
+      .kwetu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .kwetu-mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 320px;
+        max-width: 85vw;
+        background: white;
+        z-index: 2001;
+        transform: translateX(-100%);
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .kwetu-mobile-menu.active {
+        transform: translateX(0);
+      }
+
+      .mobile-header {
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .mobile-logo {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .close-btn {
+        background: var(--bg-light);
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--text-dark);
+        transition: var(--transition);
+      }
+
+      .close-btn:hover {
+        background: #eee;
+      }
+
+      .mobile-content {
+        padding: 24px;
+        overflow-y: auto;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .mobile-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .mobile-links > li {
+        animation: fadeInUp 0.5s ease-out forwards;
+      }
+
+      .mobile-links > li:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .mobile-links > li:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .mobile-links > li:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .mobile-links > li:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .mobile-links > li:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      .mobile-links > li > a {
+        font-size: 1.125rem;
+        font-weight: 500;
+        display: block;
+        padding: 12px 0;
+        color: var(--text-dark);
+      }
+
+      .mobile-accordion {
+        border-bottom: 1px solid transparent;
+      }
+
+      .accordion-btn {
+        width: 100%;
+        background: none;
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: var(--text-dark);
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .accordion-btn i {
+        font-size: 0.875rem;
+        transition: transform 0.3s;
+      }
+      .accordion-btn.active i {
+        transform: none;
+      }
+
+      .accordion-content {
+        display: none;
+        padding-left: 12px;
+        flex-direction: column;
+        gap: 8px;
+        padding-bottom: 12px;
+      }
+
+      .accordion-content a {
+        padding: 8px 0;
+        color: var(--text-gray);
+        font-size: 1rem;
+        display: block;
+      }
+
+      .accordion-content a:hover {
+        color: var(--primary-color);
+        padding-left: 4px;
+      }
+
+      .mobile-footer {
+        margin-top: auto;
+        padding-top: 24px;
+        border-top: 1px solid var(--border-color);
+      }
+      .mobile-cta {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .mobile-contact-info p {
+        margin-bottom: 8px;
+        color: var(--text-gray);
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .mobile-contact-info i {
+        color: var(--primary-color);
+        width: 20px;
+        text-align: center;
+      }
+
+      /* RESPONSIVE QUERIES */
+      @media (max-width: 992px) {
+        .kwetu-desktop-nav,
+        .desktop-cta {
+          display: none;
+        }
+        .kwetu-toggle {
+          display: flex;
+        }
+      }
+    </style>
+
+    <script>
+      function openMenu() {
+        document.getElementById("kwetuMobileMenu").classList.add("active");
+        document.getElementById("kwetuOverlay").classList.add("active");
+        document.body.classList.add("menu-open");
+      }
+
+      function closeMenu() {
+        document.getElementById("kwetuMobileMenu").classList.remove("active");
+        document.getElementById("kwetuOverlay").classList.remove("active");
+        document.body.classList.remove("menu-open");
+      }
+
+      // Accordion Logic
+      document.querySelectorAll(".accordion-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          // Close others (optional - canvas style usually allows multiple open)
+          // const others = document.querySelectorAll('.accordion-content');
+          // others.forEach(c => { if(c !== this.nextElementSibling) c.style.display = 'none'; });
+
+          this.classList.toggle("active");
+          const content = this.nextElementSibling;
+          if (content.style.display === "flex") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "flex";
+          }
+        });
+      });
+
+      // Close menu on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+    </script>
+  </body>
+</html>

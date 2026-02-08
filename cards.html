@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Marketing Services</title>
+    <style>
+        .solar-cards-section {
+            padding: 40px 20px;
+        }
+
+        .solar-cards-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .solar-cards-section .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .solar-cards-section .card {
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            height: 450px;
+        }
+
+       
+
+        .solar-cards-section .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.5s ease;
+        }
+
+        .solar-cards-section .card:hover .card-image {
+            transform: scale(1.1);
+        }
+
+        .solar-cards-section .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            color: white;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9), transparent);
+            transition: all 0.3s ease;
+        }
+
+        .solar-cards-section .card-title {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: white;
+            margin-bottom: 0;
+            transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .solar-cards-section .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .solar-cards-section .card {
+                height: 400px;
+            }
+
+            .solar-cards-section .card-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="solar-cards-section">
+        <div class="container">
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=800&fit=crop" alt="Qualified Solar Leads" class="card-image">
+                    <div class="card-content">
+                        <h2 class="card-title">Qualified Solar Leads</h2>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=600&h=800&fit=crop" alt="Conversion Systems" class="card-image">
+                    <div class="card-content">
+                        <h2 class="card-title">Conversion Systems</h2>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=800&fit=crop" alt="Measurable ROI" class="card-image">
+                    <div class="card-content">
+                        <h2 class="card-title">Measurable ROI</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

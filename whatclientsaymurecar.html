@@ -1,0 +1,180 @@
+<style>
+    /* Testimonials Section */
+    .testimonials-section {
+        background: #F5F5F0;
+        padding: 140px 80px;
+        position: relative;
+    }
+
+    .testimonials-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 100px;
+    }
+
+    .section-label {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #ff6900;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .section-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(42px, 6vw, 72px);
+        font-weight: 600;
+        color: #0A0A0A;
+        line-height: 1.2;
+        margin-bottom: 30px;
+    }
+
+    .section-description {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        color: #4A4A4A;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-top: 80px;
+    }
+
+    .testimonial-card {
+        background: #FFFFFF;
+        padding: 50px 40px;
+        border-radius: 2px;
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 120px;
+        font-weight: 700;
+        color: rgba(255, 105, 0, 0.1);
+        line-height: 1;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: #333333;
+        line-height: 1.9;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .testimonial-info h4 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #0A0A0A;
+        margin-bottom: 5px;
+    }
+
+    .testimonial-info p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: #666666;
+    }
+
+    .testimonial-rating {
+        display: flex;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .testimonials-section {
+            padding: 80px 30px;
+        }
+    }
+</style>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="testimonials-container">
+        <div class="section-header">
+            <span class="section-label">Client Stories</span>
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-description">Excellence recognized by those who demand the best.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Excellent service! The booking was seamless and the car was in perfect condition."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Tourist</p>
+                        <div class="testimonial-rating">
+                            <!-- Star ratings removed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Murecar has been our go-to for all corporate transportation needs. Highly reliable!"</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-info">
+                        <h4>Michael Chen</h4>
+                        <p>Corporate Client</p>
+                        <div class="testimonial-rating">
+                            <!-- Star ratings removed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Great prices and fantastic customer service. Will definitely rent again!"</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-info">
+                        <h4>Emma Williams</h4>
+                        <p>Individual Renter</p>
+                        <div class="testimonial-rating">
+                            <!-- Star ratings removed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

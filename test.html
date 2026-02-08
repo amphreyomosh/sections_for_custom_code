@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+
+      /* Remove Squarespace's accordion divider lines */
+      .accordion-divider,
+      .accordion-divider--top,
+      .accordion-divider--bottom,
+      div[class*="accordion-divider"] {
+        display: none !important;
+        height: 0 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
+
+            /* Reset accordion default styling */
+            .sqs-block-accordion .sqs-block-content {
+              position: relative;
+              background-color: transparent;
+              border-radius: 0;
+              padding: 0;
+            }
+
+
+            /* Button Container Styling */
+            .sqs-block-button-container {
+              margin-bottom: 20px !important;
+            }
+
+            .sqs-block-button-element {
+              display: inline-flex !important;
+              align-items: center !important;
+              justify-content: center !important;
+              min-width: 200px !important;
+              max-width: 280px !important;
+              padding: 12px 30px !important;
+              border: 2px solid #1772bd !important;
+              background: white !important;
+              color: #2f4a8e !important;
+              border-radius: 25px !important;
+              transition: all 0.3s ease !important;
+              font-weight: 600 !important;
+              text-transform: uppercase !important;
+              letter-spacing: 1px !important;
+              text-decoration: none !important;
+              position: relative !important;
+              overflow: hidden !important;
+              line-height: normal !important;
+            }
+
+            .sqs-block-button-element:hover,
+            .sqs-block-button-element.active {
+              background: #2f4a8e !important;
+              color: white !important;
+              transform: translateY(-2px) !important;
+              box-shadow: 0 4px 12px rgba(23, 114, 189, 0.3) !important;
+            }
+
+            .sqs-block-button-element::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 0;
+              height: 0;
+              background: rgba(255, 255, 255, 0.3);
+              border-radius: 50%;
+              transform: translate(-50%, -50%);
+              transition: all 0.6s ease;
+              z-index: 0;
+            }
+
+            .sqs-block-button-element.clicked::before {
+              width: 300px;
+              height: 300px;
+            }
+
+            .sqs-block-button-element .sqs-html {
+              position: relative;
+              z-index: 1;
+            }
+
+            .sqs-block-button-element.active {
+              animation: pulse 2s infinite;
+            }
+
+            @keyframes pulse {
+              0%,
+              100% {
+                box-shadow: 0 4px 12px rgba(23, 114, 189, 0.3);
+              }
+              50% {
+                box-shadow: 0 4px 20px rgba(23, 114, 189, 0.5);
+              }
+            }
+
+            /* Main Accordion Container */
+            .sqs-block-accordion {
+              max-width: 100%;
+              margin: 0 auto 40px;
+              padding: 20px 0;
+              opacity: 1;
+              border: none !important;
+              transform: translateY(0);
+              transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+          /* Accordion Items Container */
+      .accordion-items-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Individual Accordion Items */
+      .accordion-item,
+      li.accordion-item {
+        border: none !important;
+        border-bottom: none !important;
+        border-radius: 8px;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+        background: #e5e5e5 !important;
+        color: gray !important;
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: none !important;
+      }
+
+            /* GRAY on hover */
+            li.accordion-item:hover {
+              background-color: #666 !important;
+            }
+
+            /* Stay BLUE when open */
+            li.accordion-item:has(
+                .accordion-item__click-target[aria-expanded="true"]
+              ) {
+              background-color: #2f4a8e !important;
+            }
+
+            /* Click Target Area */
+            .accordion-item__click-target {
+              display: flex !important;
+              align-items: center !important;
+              justify-content: space-between;
+              min-height: 70px !important;
+              padding: 0 !important;
+              width: 100%;
+              background-color: transparent !important;
+              border: none !important;
+              cursor: pointer;
+            }
+
+            [data-accordion-icon-placement="left"] .accordion-item__click-target {
+              flex-direction: row-reverse;
+            }
+
+            /* Title Wrapper */
+            .accordion-item__title-wrapper {
+              height: auto !important;
+              align-items: center;
+              z-index: 1;
+              margin-left: 15px !important;
+            }
+
+            /* Title Styling */
+            .accordion-item__title {
+              display: flex;
+              align-items: center;
+              position: relative;
+              color: #333 !important;
+              font-size: 17px !important;
+              margin: 0 0 0 5px !important;
+              cursor: pointer;
+            }
+
+            .accordion-item__title-wrapper:hover .accordion-item__title,
+            .accordion-item__title-wrapper:hover .plus,
+            li.accordion-item:hover .plus {
+              color: white !important;
+            }
+
+            li.accordion-item:has(.accordion-item__click-target[aria-expanded="true"])
+              .plus,
+            li.accordion-item:has(.accordion-item__click-target[aria-expanded="true"])
+              .accordion-item__title {
+              color: #ffffff !important;
+            }
+
+            li.accordion-item:has(.accordion-item__click-target[aria-expanded="true"])
+              .accordion-item__title {
+              margin-left: 10px !important;
+            }
+
+            /* Icon Container */
+            .accordion-icon-container {
+              display: flex !important;
+              align-items: center !important;
+              justify-content: center !important;
+              flex: 0 0 16px;
+              width: 16px !important;
+              height: 16px !important;
+              margin-right: 15px !important;
+            }
+
+            /* Plus/Minus Icon - CLOSED STATE (Plus) */
+            .plus {
+              width: 16px !important;
+              height: 16px !important;
+              position: relative !important;
+              color: #ffffff !important;
+              display: inline-block !important;
+              transition: all 0.3s ease !important;
+            }
+
+            .plus > .plus__horizontal-line,
+            .plus > .plus__vertical-line {
+              display: none !important;
+            }
+
+            /* Horizontal line of plus (always visible) - WHITE by default */
+            .plus::before {
+              content: "" !important;
+              position: absolute !important;
+              top: 50% !important;
+              left: 50% !important;
+              width: 14px !important;
+              height: 2px !important;
+              background: white !important;
+              transform: translate(-50%, -50%) !important;
+              transition: all 0.3s ease !important;
+              border-radius: 1px !important;
+            }
+
+            /* Vertical line of plus (hidden when open) - WHITE by default */
+            .plus::after {
+              content: "" !important;
+              position: absolute !important;
+              top: 50% !important;
+              left: 50% !important;
+              width: 2px !important;
+              height: 14px !important;
+              background: white !important;
+              transform: translate(-50%, -50%) !important;
+              transition: all 0.3s ease !important;
+              border-radius: 1px !important;
+            }
+
+            /* OPEN STATE (Minus) - Hide vertical line */
+            .accordion-item__click-target[aria-expanded="true"] .plus::after {
+              opacity: 0 !important;
+              transform: translate(-50%, -50%) !important;
+              border: none !important;
+            }
+
+            /* Hover state - stays white */
+            .accordion-item:hover ,
+            .accordion-item:hover {
+              background: white !important;
+            }
+
+            .plus::before,  .plus::after {
+              background: #333 !important;
+            }
+
+
+            .accordion-item:hover
+              .accordion-item__click-target[aria-expanded="true"]
+              .plus::before {
+              background: white !important;
+            }
+
+            /* Dropdown Container */
+            .accordion-item__dropdown {
+              display: none;
+              width: 100%;
+              background: #fff;
+              transition: all 0.3s ease;
+            }
+
+            .accordion-item__dropdown--open {
+              display: block;
+              animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            @keyframes slideDown {
+              from {
+                opacity: 0;
+                max-height: 0;
+                transform: translateY(-10px);
+              }
+              to {
+                opacity: 1;
+                max-height: 1000px;
+                transform: translateY(0);
+              }
+            }
+
+            /* Dropdown Content */
+            .accordion-item__description {
+              background: #ffffff !important;
+              color: #666 !important;
+              padding: 0 !important;
+              margin: 0 !important;
+              width: 100% !important;
+              box-sizing: border-box;
+            }
+
+            .accordion-item__description * {
+              color: #666 !important;
+            }
+
+            .accordion-item__description p {
+              font-size: 1.1rem !important;
+              line-height: 1.6 !important;
+              margin: 0 !important;
+              padding: 20px !important;
+            }
+
+            .accordion-item__description p:last-child {
+              margin-bottom: 0 !important;
+            }
+
+            .accordion-item__description a {
+              text-decoration: underline;
+              font-style: normal;
+              color: #2f4a8e !important;
+            }
+
+            .accordion-item__description a:hover {
+              text-decoration: underline;
+              color: #1a365d !important;
+            }
+
+            /* Card Grid Styling - 3 CARDS PER ROW */
+            .accordion-cards {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 20px;
+              margin: 40px 20px -20px auto !important;
+              width: 140% !important;
+              justify-content: center;
+            }
+
+            .curriculum-card {
+              background: #2f4a8e;
+              border-radius: 12px;
+              padding: 20px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              width: 400px;
+              height: 200px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+              flex-shrink: 0;
+            }
+
+            .curriculum-card:hover {
+              transform: translateY(-4px);
+              box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .curriculum-card h3 {
+              color: white !important;
+              font-size: 1.3rem !important;
+              font-weight: 600 !important;
+              margin: 0 !important;
+              line-height: 1.3 !important;
+            }
+
+            /* Color variations for cards */
+            .curriculum-card.color-1 {
+              background: #004e3a;
+            }
+            .curriculum-card.color-2 {
+              background: #9b421a;
+            }
+            .curriculum-card.color-3 {
+              background: #18488a;
+            }
+            .curriculum-card.color-4 {
+
+               background: #9b421a;
+            }
+            .curriculum-card.color-5 {
+             background: #004e3a;;
+            }
+            .curriculum-card.color-6 {
+              background: #af7212;
+            }
+
+            /* Lightbox Styles */
+            .lightbox-overlay {
+              display: none;
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 0.9);
+              z-index: 9999;
+              align-items: center;
+              justify-content: center;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+
+            .lightbox-overlay.active {
+              display: flex;
+              opacity: 1;
+            }
+
+            .lightbox-content {
+              position: relative;
+              max-width: 90%;
+              max-height: 90%;
+              animation: zoomIn 0.3s ease;
+            }
+
+            @keyframes zoomIn {
+              from {
+                transform: scale(0.8);
+                opacity: 0;
+              }
+              to {
+                transform: scale(1);
+                opacity: 1;
+              }
+            }
+
+            .lightbox-content img {
+              width: 100%;
+              height: auto;
+              max-height: 90vh;
+              object-fit: contain;
+              display: block;
+            }
+
+            .lightbox-close {
+              position: absolute;
+              top: -40px;
+              right: 0;
+              background: white;
+              border: none;
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              cursor: pointer;
+              font-size: 24px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #2f4a8e;
+              transition: all 0.3s ease;
+              font-weight: bold;
+            }
+
+            .lightbox-close:hover {
+              background: #2f4a8e;
+              color: white;
+              transform: translate(-50%, -50%) !important;
+            }
+
+            /* Responsive Design */
+            @media (max-width: 768px) {
+              .sqs-block-accordion {
+                padding: 20px 15px;
+              }
+
+              .accordion-items-container {
+                gap: 6px;
+              }
+
+              li.accordion-item {
+                margin: 0 0 6px 0 !important;
+                border-radius: 6px;
+              }
+
+              .accordion-item__click-target {
+                min-height: 60px !important;
+                padding: 10px 15px !important;
+              }
+
+              .accordion-item__title {
+                font-size: 16px !important;
+              }
+
+              .accordion-item__description {
+                padding: 0 !important;
+              }
+
+              .sqs-block-button-element {
+                width: 200px !important;
+                margin: 0 auto 15px auto !important;
+                padding: 10px 25px !important;
+              }
+
+              .accordion-cards {
+                width: 100% !important;
+                gap: 15px;
+                margin: 20px 0 !important;
+                padding: 0 15px;
+                justify-content: center !important;
+                align-content: center !important;
+                flex-direction: column;
+                align-items: center;
+                box-sizing: border-box;
+              }
+
+              .curriculum-card {
+                width: 100%;
+                max-width: 500px;
+                height: 200px;
+                padding: 15px;
+              }
+
+              .curriculum-card h3 {
+                font-size: 1.1rem !important;
+              }
+
+              .lightbox-close {
+                top: 10px;
+                right: 10px;
+              }
+            }
+
+            @media (max-width: 480px) {
+              .accordion-item__title {
+                font-size: 15px !important;
+              }
+
+              .accordion-item__click-target {
+                min-height: 55px !important;
+                padding: 10px 12px !important;
+              }
+
+              .accordion-cards {
+                gap: 12px;
+                margin: 12px;
+              }
+
+              .curriculum-card {
+                width: 100%;
+                max-width: 250px;
+                height: 200px;
+                margin: 0 auto;
+              }
+              /*align the cards to the center */
+               .accordion-cards {
+                width: 100% !important;
+                gap: 15px;
+                margin: 12px auto 12px auto !important;
+                align-content: center !important;
+              }
+
+              .curriculum-card h3 {
+                font-size: 1rem !important;
+              }
+            }
+    </style>
+  </head>
+  <body>
+    <!-- Lightbox Overlay -->
+    <div class="lightbox-overlay" id="lightbox">
+      <div class="lightbox-content">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <img id="lightbox-img" src="" alt="Enlarged view" />
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Define the 6 transdisciplinary themes
+        const themes = [
+          { title: "Who We Are", color: "color-1" },
+          { title: "Where We Are in Place and Time", color: "color-2" },
+          { title: "How We Express Ourselves", color: "color-3" },
+          { title: "How the World Works", color: "color-4" },
+          { title: "How We Organize Ourselves", color: "color-5" },
+          { title: "Sharing the Planet", color: "color-6" },
+        ];
+
+        // Image data for each grade level (matching the original structure)
+        const imageData = [
+          // TK
+          {
+            "Who We Are": null,
+            "Where We Are in Place and Time": null,
+            "How We Express Ourselves": null,
+            "How the World Works": null,
+            "How We Organize Ourselves": null,
+            "Sharing the Planet": null,
+          },
+
+          // Kindergarten
+          {
+            "Who We Are":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/f806531d-c010-4078-a7a2-62cba1ec7309/kindergarten_needs.png",
+
+            "Where We Are in Place and Time": null,
+            "How We Express Ourselves":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/28efdf53-8bd5-4dd0-9e9a-ea63af45c430/kindergarten_creativity.png",
+
+            "How the World Works": null,
+            "How We Organize Ourselves":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/3bb61760-534a-49c3-bd4d-21c897f09355/kindergarten_consequences.png?content-type=image%2Fpng",
+            "Sharing the Planet":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/47000a7d-3713-4011-862d-39dddb63dbb7/kindergarten_impact.png",
+          },
+
+          // 1st Grade
+          {
+            "Who We Are":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/170ec12e-5aa7-49e8-a26a-a48cc500b356/1st_grade_community.png",
+            "Where We Are in Place and Time":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/192b5e6d-b856-4ce0-a49e-fcccc0b1d082/1st_grade_environment.png",
+            "How We Express Ourselves":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/b2cfaa22-40a8-4570-9eb2-9db92974556d/1st_grade_point_of_view.png",
+            "How the World Works":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/f509e261-93d2-457a-beff-c1c4faf072e7/1st_grade_discovery.png",
+            "How We Organize Ourselves":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/9ad7715e-a214-4c85-880f-f2861fc0f3c1/1st_grade_system.png",
+            "Sharing the Planet":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/130effda-617b-4ad7-b89d-39401e5d8d51/1st_grade_needs.png"
+          },
+
+          // 2nd Grade
+          {
+            "Who We Are": null,
+            "Where We Are in Place and Time": null,
+            "How We Express Ourselves": null,
+            "How the World Works": null,
+            "How We Organize Ourselves": null,
+            "Sharing the Planet": null,
+          },
+
+          // 3rd Grade
+          {
+            "Who We Are":
+             "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/4870386b-8861-470e-8696-b88c595c9875/3rd_grade_connection.png",
+            "Where We Are in Place and Time":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/efe4d122-8a2e-40bc-b2ea-97a81076c027/3rd_grade_effect.png",
+            "How We Express Ourselves":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/dc1d401e-17b8-4118-b0b0-37348f942bff/3rd_grade_voice.png",
+            "How the World Works":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/abd4e29f-c469-424a-8d27-400145cc3302/3rd_grade_value.png",
+            "How We Organize Ourselves":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/f5a25a82-8086-44d0-874d-c7b78e1458f3/3rd_grade_responsibility.png",
+            "Sharing the Planet":
+               "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/0c1ef5f1-21cc-41d7-a82f-aca5becbdfd6/3rd_grade_fairness.png"
+          },
+
+          // 4th Grade
+          {
+            "Who We Are":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/1c9a15ab-bdf0-43b0-97d8-566f153ad7cd/4th_grade_survival.png",
+            "Where We Are in Place and Time":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/7ad7d5ef-4aaf-4280-833b-2bbf23bd2b3c/4th_grade_pressure.png",
+            "How We Express Ourselves":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/7a9b9bf3-bad5-430b-bd4c-c3e1682a900d/4th_grade_perseverance.png",
+            
+            "How the World Works":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/11f5e33b-4bcc-44b7-a979-5c16cedaf885/4th_grade_systems.png"
+              ,
+            "How We Organize Ourselves":
+               "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/a7181952-7557-433c-a3b2-590df5b7c963/4th_grade_responsibilty.png",
+            "Sharing the Planet":
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/c66b2520-a09c-4154-9843-b6d8c0c3e22b/4th_grade_impact.png",
+          },
+
+          // 5th Grade
+          {
+            "Who We Are": null,
+            "Where We Are in Place and Time": null,
+            "How We Express Ourselves": null,
+            "How the World Works": null,
+            "How We Organize Ourselves": null,
+            "Sharing the Planet": null,
+          },
+
+          // 6th Grade
+          {
+            "Who We Are": null,
+            "Where We Are in Place and Time": null,
+            "How We Express Ourselves": null,
+            "How the World Works": null,
+            "How We Organize Ourselves": null,
+            "Sharing the Planet": null,
+          },
+
+          // Specialties (single image)
+          {
+            special:
+              "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/b5f865f0-7516-451e-bfe1-1c302af2f825/specialties.png",
+          },
+        ];
+
+        const comingSoonImg =
+          "https://images.squarespace-cdn.com/content/6823941f03e99a438a3b3c32/386f8613-f10a-432b-b713-8f7b4e75b138/coming-soon.jpg";
+
+        // Insert cards into accordion descriptions
+        document
+          .querySelectorAll(".accordion-item__description")
+          .forEach((desc, i) => {
+            // Special handling for last item (Specialties)
+            if (i === imageData.length - 1 && imageData[i].special) {
+              const wrapper = document.createElement("div");
+              wrapper.style.cssText = "margin: 20px; text-align: center;";
+              const img = document.createElement("img");
+              img.src = imageData[i].special;
+              img.alt = "Specialties";
+              img.style.cssText =
+                "max-width: 100%; height: auto; cursor: pointer;";
+              img.addEventListener("click", () =>
+                openLightbox(imageData[i].special)
+              );
+              wrapper.appendChild(img);
+              desc.insertBefore(wrapper, desc.firstChild);
+              return;
+            }
+
+            // Create card grid for regular grade levels
+            const wrapper = document.createElement("div");
+            wrapper.className = "accordion-cards";
+
+            themes.forEach((theme) => {
+              const card = document.createElement("div");
+              card.className = `curriculum-card ${theme.color}`;
+
+              const title = document.createElement("h3");
+              title.textContent = theme.title;
+              card.appendChild(title);
+
+              // Add click handler
+              const imgSrc = imageData[i] ? imageData[i][theme.title] : null;
+              card.addEventListener("click", () => {
+                openLightbox(imgSrc || comingSoonImg);
+              });
+
+              wrapper.appendChild(card);
+            });
+
+            desc.insertBefore(wrapper, desc.firstChild);
+          });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const lightboxClose = document.getElementById("lightbox-close");
+
+        function openLightbox(src) {
+          // Preload image to prevent delay
+          const img = new Image();
+          img.onload = function () {
+            lightboxImg.src = src;
+            lightbox.classList.add("active");
+            document.body.style.overflow = "hidden";
+          };
+          img.src = src;
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        lightboxClose.addEventListener("click", function (e) {
+          e.stopPropagation();
+          closeLightbox();
+        });
+
+        lightbox.addEventListener("click", function (e) {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && lightbox.classList.contains("active")) {
+            closeLightbox();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Section</title>
+
+    <style>
+      .feature-container {
+        font-family: inherit;
+        max-width: 1200px;
+        margin: auto;
+        border-radius: 48px;
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 0;
+        padding: 20px 30px;
+        position: relative;
+      }
+
+      .feature-container * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* LEFT */
+      .feature-left {
+        background: #333;
+        padding: 60px 40px;
+        display: flex;
+        align-items: center;
+        border-radius: 20px;
+        transform: translateX(20px);
+      }
+
+      .feature-tabs {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+      }
+
+      .feature-tabs::before {
+        content: "";
+        position: absolute;
+        left: anchor(--atab left);
+        top: anchor(--atab top);
+        width: anchor-size(--atab width);
+        height: anchor-size(--atab height);
+        background: #14bc7d;
+        border-radius: 50px;
+        transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+
+      .tab {
+        position: relative;
+        z-index: 2;
+        padding: 26px 30px;
+        font-size: 22px;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 135%;
+      }
+
+      .tab.active {
+        anchor-name: --atab;
+      }
+
+      @supports not (anchor-name: --a) {
+        .tab.active {
+          background: #14bc7d;
+          border-radius: 50px;
+        }
+      }
+
+      .tab span {
+        max-width: 70%;
+        line-height: 1.2;
+      }
+
+      .tab .arrow {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: 0.7s cubic-bezier(0.66, 0, 0.34, 1);
+      }
+
+      .tab.active .arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* RIGHT */
+      .feature-right {
+        background: #ececec;
+        padding: 70px 80px 70px 120px;
+        border-radius: 0 20px 20px 0;
+      }
+
+      .panel {
+        display: none;
+      }
+
+      .panel.active {
+        display: block;
+        animation: fade 0.4s ease;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .badge {
+        background: #fff;
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 13px;
+        display: inline-block;
+        margin-bottom: 18px;
+      }
+
+      h2 {
+        font-size: 46px;
+        margin-bottom: 18px;
+        line-height: 1.15;
+      }
+
+      .desc {
+        color: #555;
+        max-width: 540px;
+        margin-bottom: 32px;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 40px;
+        margin-bottom: 40px;
+      }
+
+      .features div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+      }
+
+      .features div::before {
+        content: "✓";
+        width: 22px;
+        height: 22px;
+        background: #14bc7d;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .stat h3 {
+        font-size: 36px;
+      }
+
+      .stat p {
+        color: #666;
+        font-size: 14px;
+        max-width: 260px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .feature-container {
+          grid-template-columns: 350px 1fr;
+          padding: 40px 30px;
+        }
+
+        .feature-left {
+          padding: 50px 30px;
+        }
+
+        .feature-right {
+          padding: 60px 60px 60px 80px;
+        }
+
+        h2 {
+          font-size: 42px;
+        }
+
+        .tab {
+          padding: 22px 25px;
+          font-size: 20px;
+          width: 130%;
+        }
+
+        .tab .arrow {
+          width: 38px;
+          height: 38px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .feature-container {
+          grid-template-columns: 1fr;
+          padding: 30px 20px;
+          border-radius: 24px;
+         
+        }
+
+        .feature-left {
+          transform: none;
+          border-radius: 16px;
+          padding: 40px 25px;
+           z-index: 2;
+        }
+
+        .feature-right {
+          border-radius: 16px;
+          padding: 50px 30px;
+          transform: translateY(-25px);
+          z-index: 1;
+        }
+
+        h2 {
+          font-size: 36px;
+          margin-bottom: 20px;
+        }
+
+        .desc {
+          margin-bottom: 30px;
+          max-width: 100%;
+        }
+
+        .features {
+          grid-template-columns: 1fr;
+          gap: 12px 20px;
+          margin-bottom: 30px;
+        }
+
+        .tab {
+          padding: 18px 20px;
+          font-size: 18px;
+          width: 100%;
+          justify-content: center;
+        }
+
+        .tab span {
+          max-width: 80%;
+        }
+
+        .tab .arrow {
+          width: 32px;
+          height: 32px;
+          position: absolute;
+          right: 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .feature-container {
+          padding: 20px 15px;
+          gap: 30px;
+        }
+
+        .feature-left {
+          padding: 30px 20px;
+        }
+
+        .feature-right {
+          padding: 40px 25px;
+        }
+
+        h2 {
+          font-size: 28px;
+          margin-bottom: 16px;
+        }
+
+        .desc {
+          font-size: 16px;
+          margin-bottom: 24px;
+        }
+
+        .tab {
+          padding: 16px 18px;
+          font-size: 16px;
+        }
+
+        .tab .arrow {
+          width: 28px;
+          height: 28px;
+          right: 12px;
+        }
+
+        .features div {
+          font-size: 16px;
+        }
+
+        .features div::before {
+          width: 20px;
+          height: 20px;
+          font-size: 11px;
+        }
+      }
+    </style>
+  </head>
+
+  <div class="feature-container">
+      <!-- LEFT -->
+      <div class="feature-left">
+        <div class="feature-tabs" id="tabs">
+          <div class="tab active" data-tab="one">
+            <span>Qualified Solar Leads</span>
+            <div class="arrow">→</div>
+          </div>
+
+          <div class="tab" data-tab="two">
+            <span>Conversion Systems</span>
+            <div class="arrow">→</div>
+          </div>
+
+          <div class="tab" data-tab="three">
+            <span>Measurable ROI</span>
+            <div class="arrow">→</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="feature-right">
+        <div class="panel active" id="one">
+          <h2>Qualified Solar<br />Leads</h2>
+          <p class="desc">
+            We attract prospects who already understand the value of solar energy, have clear pricing expectations, and are ready to engage in meaningful conversations. Our marketing strategies target informed customers who are actively seeking sustainable energy solutions, ensuring higher-quality leads, faster conversions, and a greater likelihood of long-term satisfaction with their solar investment.
+          </p>
+
+          <div class="features">
+            <div>Higher-Quality Leads</div>
+            <div>Faster Conversions</div>
+            <div>Long-Term Satisfaction</div>
+            <div>Strategic Outreach</div>
+          </div>
+        </div>
+
+        <div class="panel" id="two">
+          <h2>Conversion<br />Systems</h2>
+          <p class="desc">
+            From high-converting landing pages to seamless CRM automation, we design and implement systems that guide prospects through every stage of their journey, from initial curiosity to informed decision-making and full commitment. Our approach ensures that leads are nurtured efficiently, engagement is maximized, and conversions are consistently optimized for your solar energy business.
+          </p>
+
+          <div class="features">
+            <div>High-Converting Landing Pages</div>
+            <div>Seamless CRM Automation</div>
+            <div>Personalized Email Sequences</div>
+            <div>Retargeting Strategies</div>
+          </div>
+        </div>
+
+        <div class="panel" id="three">
+          <h2>Measurable<br />ROI</h2>
+          <p class="desc">
+            Our marketing systems include clear tracking and detailed reporting, giving you full visibility into how every campaign performs. By understanding which strategies generate the best results, we can make informed decisions that maximize your return on investment and ensure your marketing budget is spent efficiently.
+          </p>
+
+          <div class="features">
+            <div>Clear Tracking</div>
+            <div>Detailed Reporting</div>
+            <div>Continuous Optimization</div>
+            <div>Budget Control</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const tabs = document.querySelectorAll(".tab");
+      const panels = document.querySelectorAll(".panel");
+
+      tabs.forEach((tab) => {
+        tab.onclick = () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          panels.forEach((p) => p.classList.remove("active"));
+          tab.classList.add("active");
+          document.getElementById(tab.dataset.tab).classList.add("active");
+        };
+      });
+    </script>
+  </html>

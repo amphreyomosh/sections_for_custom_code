@@ -1,0 +1,296 @@
+<!-- Add this in your page/post or in a custom HTML block -->
+
+<!-- Font Import (add this ONCE at the top of your page) -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    /* Fleet Section - WordPress/OceanWP Compatible */
+    body .fleet-section {
+        background: #0A0A0A !important;
+        padding: 120px 80px !important;
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    body .fleet-section * {
+        box-sizing: border-box !important;
+    }
+
+    body .fleet-section .services-container {
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    body .fleet-section .section-header {
+        text-align: center !important;
+        margin-bottom: 100px !important;
+    }
+
+    body .fleet-section .section-label {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        letter-spacing: 4px !important;
+        text-transform: uppercase !important;
+        color: #ff6900 !important;
+        margin-bottom: 20px !important;
+        display: block !important;
+        line-height: normal !important;
+    }
+
+    body .fleet-section .section-title {
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: clamp(42px, 6vw, 72px) !important;
+        font-weight: 600 !important;
+        color: #F5F5F0 !important;
+        line-height: 1.2 !important;
+        margin-bottom: 30px !important;
+        margin-top: 0 !important;
+    }
+
+    body .fleet-section .section-description {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 18px !important;
+        font-weight: 300 !important;
+        color: #CCCCCC !important;
+        max-width: 700px !important;
+        margin: 0 auto !important;
+        line-height: 1.8 !important;
+    }
+
+    body .fleet-section .fleet-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 30px !important;
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        list-style: none !important;
+    }
+
+    body .fleet-section .fleet-card {
+        position: relative !important;
+        height: 500px !important;
+        overflow: hidden !important;
+        border-radius: 2px !important;
+        cursor: pointer !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    body .fleet-section .fleet-card img.fleet-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        max-width: none !important;
+    }
+
+    body .fleet-section .fleet-card:hover img.fleet-image {
+        transform: scale(1.1) !important;
+    }
+
+    body .fleet-section .fleet-overlay {
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 40px !important;
+        background: linear-gradient(to top, rgba(10, 10, 10, 0.95), transparent) !important;
+        transform: translateY(20px) !important;
+        opacity: 0 !important;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        margin: 0 !important;
+    }
+
+    body .fleet-section .fleet-card:hover .fleet-overlay {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+    }
+
+    body .fleet-section .fleet-category {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        letter-spacing: 3px !important;
+        text-transform: uppercase !important;
+        color: #ff6900 !important;
+        margin-bottom: 10px !important;
+        margin-top: 0 !important;
+        line-height: normal !important;
+    }
+
+    body .fleet-section .fleet-name {
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 32px !important;
+        font-weight: 600 !important;
+        color: #F5F5F0 !important;
+        margin-bottom: 15px !important;
+        margin-top: 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    body .fleet-section .fleet-specs {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 300 !important;
+        color: #CCCCCC !important;
+        display: flex !important;
+        gap: 20px !important;
+        margin-bottom: 20px !important;
+        margin-top: 0 !important;
+        line-height: normal !important;
+    }
+
+    body .fleet-section .fleet-specs span {
+        color: #CCCCCC !important;
+        font-family: 'Montserrat', sans-serif !important;
+    }
+
+    body .fleet-section .fleet-price {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 24px !important;
+        font-weight: 600 !important;
+        color: #ff6900 !important;
+        margin: 0 !important;
+        line-height: normal !important;
+    }
+
+    body .fleet-section .fleet-price span {
+        font-size: 14px !important;
+        font-weight: 300 !important;
+        color: #999999 !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        body .fleet-section .fleet-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        body .fleet-section {
+            padding: 80px 30px !important;
+        }
+
+        body .fleet-section .fleet-grid {
+            grid-template-columns: 1fr !important;
+        }
+
+        body .fleet-section .fleet-card {
+            height: 400px !important;
+        }
+
+        body .fleet-section .fleet-overlay {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+        }
+    }
+
+    /* Override OceanWP container if needed */
+    .fleet-section .container,
+    .fleet-section .site-content,
+    .fleet-section .content-area {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+</style>
+
+<!-- Fleet Section -->
+<section class="fleet-section" id="fleet">
+    <div class="services-container">
+        <div class="section-header">
+            <span class="section-label">Our Collection</span>
+            <h2 class="section-title">Exceptional Fleet</h2>
+            <p class="section-description">Curated selection of the world's most prestigious automobiles.</p>
+        </div>
+    </div>
+    <div class="fleet-grid">
+        <div class="fleet-card">
+            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=2070" alt="Mercedes S-Class" class="fleet-image">
+            <div class="fleet-overlay">
+                <div class="fleet-category">Executive Sedan</div>
+                <h3 class="fleet-name">Mercedes S-Class</h3>
+                <div class="fleet-specs">
+                    <span>V8 Engine</span>
+                    <span>4 Passengers</span>
+                </div>
+                <div class="fleet-price">$350<span>/day</span></div>
+            </div>
+        </div>
+        <div class="fleet-card">
+            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070" alt="Range Rover" class="fleet-image">
+            <div class="fleet-overlay">
+                <div class="fleet-category">Luxury SUV</div>
+                <h3 class="fleet-name">Range Rover</h3>
+                <div class="fleet-specs">
+                    <span>V6 Engine</span>
+                    <span>5 Passengers</span>
+                </div>
+                <div class="fleet-price">$420<span>/day</span></div>
+            </div>
+        </div>
+        <div class="fleet-card">
+            <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069" alt="BMW 7 Series" class="fleet-image">
+            <div class="fleet-overlay">
+                <div class="fleet-category">Premium Sedan</div>
+                <h3 class="fleet-name">BMW 7 Series</h3>
+                <div class="fleet-specs">
+                    <span>V8 Engine</span>
+                    <span>4 Passengers</span>
+                </div>
+                <div class="fleet-price">$380<span>/day</span></div>
+            </div>
+        </div>
+        <div class="fleet-card">
+            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070" alt="Porsche Panamera" class="fleet-image">
+            <div class="fleet-overlay">
+                <div class="fleet-category">Sport Sedan</div>
+                <h3 class="fleet-name">Porsche Panamera</h3>
+                <div class="fleet-specs">
+                    <span>V8 Turbo</span>
+                    <span>4 Passengers</span>
+                </div>
+                <div class="fleet-price">$480<span>/day</span></div>
+            </div>
+        </div>
+        <div class="fleet-card">
+            <img src="https://images.unsplash.com/photo-1606220838315-056192d5e927?q=80&w=2070" alt="Bentley Continental" class="fleet-image">
+            <div class="fleet-overlay">
+                <div class="fleet-category">Ultra Luxury</div>
+                <h3 class="fleet-name">Bentley Continental</h3>
+                <div class="fleet-specs">
+                    <span>W12 Engine</span>
+                    <span>4 Passengers</span>
+                </div>
+                <div class="fleet-price">$650<span>/day</span></div>
+            </div>
+        </div>
+        <div class="fleet-card">
+            <img src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?q=80&w=2070" alt="Audi Q8" class="fleet-image">
+            <div class="fleet-overlay">
+                <div class="fleet-category">Premium SUV</div>
+                <h3 class="fleet-name">Audi Q8</h3>
+                <div class="fleet-specs">
+                    <span>V6 Turbo</span>
+                    <span>5 Passengers</span>
+                </div>
+                <div class="fleet-price">$400<span>/day</span></div>
+            </div>
+        </div>
+    </div>
+</section>
