@@ -1,0 +1,507 @@
+<!-- Add this in your page/post or in a custom HTML block -->
+
+<!-- Font Import (add this ONCE at the top of your page if not already added) -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    /* FAQ Section - WordPress/OceanWP Compatible */
+    body .faq-section {
+        background: #0A0A0A !important;
+        padding: 140px 80px !important;
+        position: relative !important;
+        overflow: visible !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        clear: both !important;
+        display: block !important;
+    }
+
+    body .faq-section * {
+        box-sizing: border-box !important;
+    }
+
+    body .faq-section .faq-container {
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    /* Centered Header for Large Screens */
+    body .faq-section .section-header-wrapper {
+        text-align: center !important;
+        margin-bottom: 80px !important;
+    }
+
+    body .faq-section .section-header-wrapper .section-label {
+        display: inline-block !important;
+    }
+
+    body .faq-section .section-header-wrapper .section-title,
+    body .faq-section .section-header-wrapper .section-description {
+        max-width: 800px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Two Column Layout Below Header */
+    body .faq-section .faq-content-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr 1.2fr !important;
+        gap: 100px !important;
+        align-items: start !important;
+    }
+
+    body .faq-section .section-contact-sidebar {
+        position: sticky !important;
+        top: 100px !important;
+    }
+
+    body .faq-section .section-label {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        letter-spacing: 4px !important;
+        text-transform: uppercase !important;
+        color: #ff6900 !important;
+        margin-bottom: 20px !important;
+        display: block !important;
+        line-height: normal !important;
+    }
+
+    body .faq-section .section-title {
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: clamp(42px, 6vw, 72px) !important;
+        font-weight: 600 !important;
+        color: #F5F5F0 !important;
+        line-height: 1.2 !important;
+        margin-bottom: 30px !important;
+        margin-top: 0 !important;
+    }
+
+    body .faq-section .section-description {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 18px !important;
+        font-weight: 300 !important;
+        color: #CCCCCC !important;
+        line-height: 1.8 !important;
+        margin-bottom: 0 !important;
+    }
+
+    body .faq-section .faq-contact {
+        padding: 40px !important;
+        background: transparent !important;
+        border-radius: 2px !important;
+    }
+
+    body .faq-section .faq-contact h3 {
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 24px !important;
+        font-weight: 600 !important;
+        color: #F5F5F0 !important;
+        margin-bottom: 15px !important;
+        margin-top: 0 !important;
+    }
+
+    body .faq-section .faq-contact p {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 15px !important;
+        font-weight: 300 !important;
+        color: #CCCCCC !important;
+        line-height: 1.8 !important;
+        margin-bottom: 20px !important;
+    }
+
+    body .faq-section .faq-contact-link {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        color: #ff6900 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        transition: gap 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    body .faq-section .faq-contact-link:hover {
+        gap: 15px !important;
+        color: #ff6900 !important;
+    }
+
+    body .faq-section .faq-contact-link svg {
+        width: 16px !important;
+        height: 16px !important;
+        stroke: #ff6900 !important;
+        stroke-width: 2 !important;
+        fill: none !important;
+    }
+
+    body .faq-section .faq-list {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body .faq-section .faq-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body .faq-section .faq-question {
+        width: 100% !important;
+        text-align: left !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 35px 60px 35px 0 !important;
+        cursor: pointer !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 30px !important;
+        transition: all 0.3s ease !important;
+        position: relative !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+    }
+
+    body .faq-section .faq-question:hover {
+        padding-left: 20px !important;
+        background: transparent !important;
+    }
+
+    body .faq-section .faq-question-text {
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 24px !important;
+        font-weight: 600 !important;
+        color: #F5F5F0 !important;
+        line-height: 1.4 !important;
+        flex: 1 !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    body .faq-section .faq-icon {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        border-radius: 50% !important;
+        background: rgba(255, 105, 0, 0.1) !important;
+        border: 2px solid #ff6900 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    body .faq-section .faq-question:hover .faq-icon {
+        background: #ff6900 !important;
+        transform: rotate(90deg) !important;
+    }
+
+    body .faq-section .faq-item.active .faq-icon {
+        background: #ff6900 !important;
+        transform: rotate(45deg) !important;
+    }
+
+    body .faq-section .faq-icon svg {
+        width: 18px !important;
+        height: 18px !important;
+        stroke: #ff6900 !important;
+        stroke-width: 3 !important;
+        transition: stroke 0.3s !important;
+    }
+
+    body .faq-section .faq-question:hover .faq-icon svg,
+    body .faq-section .faq-item.active .faq-icon svg {
+        stroke: #0A0A0A !important;
+    }
+
+    body .faq-section .faq-answer {
+        max-height: 0 !important;
+        overflow: hidden !important;
+        transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    body .faq-section .faq-item.active .faq-answer {
+        max-height: 500px !important;
+        padding: 0 0 35px 0 !important;
+    }
+
+    body .faq-section .faq-answer-text {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 16px !important;
+        font-weight: 300 !important;
+        color: #CCCCCC !important;
+        line-height: 1.9 !important;
+        margin: 0 !important;
+        padding-right: 60px !important;
+    }
+
+    body .faq-section .faq-answer-text strong {
+        color: #F5F5F0 !important;
+        font-weight: 500 !important;
+    }
+
+    /* Decorative element */
+    body .faq-section::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 50% !important;
+        right: -200px !important;
+        width: 600px !important;
+        height: 600px !important;
+        background: radial-gradient(circle, rgba(255, 105, 0, 0.05) 0%, transparent 70%) !important;
+        border-radius: 50% !important;
+        pointer-events: none !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        body .faq-section .faq-content-wrapper {
+            grid-template-columns: 1fr !important;
+            gap: 60px !important;
+        }
+
+        body .faq-section .section-contact-sidebar {
+            position: static !important;
+        }
+
+        body .faq-section .section-header-wrapper {
+            text-align: left !important;
+            margin-bottom: 60px !important;
+        }
+
+        body .faq-section .section-header-wrapper .section-label {
+            display: block !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        body .faq-section {
+            padding: 80px 30px !important;
+            overflow-x: hidden !important;
+        }
+
+        body .faq-section .section-header-wrapper {
+            margin-bottom: 50px !important;
+        }
+
+        body .faq-section .faq-question {
+            padding: 25px 50px 25px 0 !important;
+        }
+
+        body .faq-section .faq-question:hover {
+            padding-left: 10px !important;
+        }
+
+        body .faq-section .faq-question-text {
+            font-size: 20px !important;
+        }
+
+        body .faq-section .faq-icon {
+            width: 35px !important;
+            height: 35px !important;
+            min-width: 35px !important;
+        }
+
+        body .faq-section .faq-answer-text {
+            padding-right: 0 !important;
+            font-size: 15px !important;
+        }
+
+        body .faq-section .faq-contact {
+            padding: 30px !important;
+        }
+    }
+
+    /* Override OceanWP container if needed */
+    .faq-section .container,
+    .faq-section .site-content,
+    .faq-section .content-area {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    /* Force visibility */
+    body .faq-section .faq-content {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+</style>
+
+<!-- FAQ Section -->
+<section class="faq-section" id="faq">
+    <div class="faq-container">
+        <!-- Centered Header -->
+        <div class="section-header-wrapper">
+            <span class="section-label">Questions & Answers</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-description">Everything you need to know about our premium transport services and luxury fleet.</p>
+        </div>
+
+        <!-- Two Column Layout: Contact on Left, Questions on Right -->
+        <div class="faq-content-wrapper">
+            <div class="section-contact-sidebar">
+                <div class="faq-contact">
+                    <h3>Still Have Questions?</h3>
+                    <p>Our concierge team is available 24/7 to assist you with any inquiries.</p>
+                    <a href="#contact" class="faq-contact-link">
+                        Contact Us
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="faq-content">
+                <ul class="faq-list">
+                    <li class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">What are the requirements to rent a luxury vehicle?</span>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="faq-answer-text">To rent from our premium fleet, you must be <strong>25 years or older</strong>, possess a valid driver's license held for at least 3 years, and provide a major credit card. International clients need a valid passport and international driving permit. All drivers undergo a verification process to ensure the highest standards of service.</p>
+                        </div>
+                    </li>
+
+                    <li class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">Is insurance included with every rental?</span>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="faq-answer-text">Yes, all our vehicles come with <strong>comprehensive insurance coverage</strong> including collision damage waiver, theft protection, and third-party liability. Premium insurance packages with zero excess are available for complete peace of mind. We also offer additional coverage options tailored to your specific needs.</p>
+                        </div>
+                    </li>
+
+                    <li class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">Can I have the vehicle delivered to my location?</span>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="faq-answer-text">Absolutely. We offer <strong>complimentary delivery and collection</strong> within city limits. For airport transfers or locations outside our standard zone, a nominal fee applies. Our white-glove delivery service includes a full vehicle orientation and documentation review at your convenience.</p>
+                        </div>
+                    </li>
+
+                    <li class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">What is your cancellation policy?</span>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="faq-answer-text">We offer <strong>flexible cancellation terms</strong>. Cancel up to 48 hours before your reservation for a full refund. Cancellations within 24-48 hours incur a 50% charge, while same-day cancellations are non-refundable. Premium members enjoy enhanced cancellation benefits with our loyalty program.</p>
+                        </div>
+                    </li>
+
+                    <li class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">Are chauffeur services available?</span>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="faq-answer-text">Yes, we provide <strong>professional chauffeur services</strong> for all vehicles in our fleet. Our experienced drivers are trained in luxury service, defensive driving, and local expertise. Available for hourly bookings, full-day service, or multi-day arrangements with advance reservation.</p>
+                        </div>
+                    </li>
+
+                    <li class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">Do you offer long-term rental options?</span>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="faq-answer-text">We offer <strong>attractive long-term rental packages</strong> from one week to twelve months with significant discounts. Corporate clients receive dedicated account management, flexible vehicle rotation, and customized billing solutions. Contact our team for a bespoke quote tailored to your requirements.</p>
+                        </div>
+                    </li>
+
+                    <li class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">What happens if the vehicle requires maintenance?</span>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="faq-answer-text">In the unlikely event of a mechanical issue, our <strong>24/7 roadside assistance</strong> team will provide immediate support. We'll arrange a comparable or superior replacement vehicle at no additional charge, ensuring your journey continues without interruption. All vehicles undergo rigorous pre-rental inspections.</p>
+                        </div>
+                    </li>
+
+                    <li class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">Can I extend my rental period?</span>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="faq-answer-text">Extensions are welcome <strong>subject to availability</strong>. Contact us at least 24 hours before your scheduled return to arrange an extension. The daily rate for extended periods matches your original booking terms, and we'll update your reservation and billing accordingly.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // FAQ Accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqQuestions = document.querySelectorAll('.faq-section .faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-section .faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    });
+</script>

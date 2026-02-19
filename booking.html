@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Section Component</title>
+    
+    <!-- Distinctive Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Darker+Grotesque:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Demo page styling - remove this when integrating */
+        body {
+            font-family: 'Darker Grotesque', sans-serif;
+            background: #0A0A0A;
+            color: #F5F5F0;
+            padding: 60px 0;
+            margin: 0;
+        }
+
+        /* ============================================
+           GALLERY SECTION - Copy from here
+           ============================================ */
+        
+        .vehicle-gallery-section {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 80px 60px;
+        }
+
+        .gallery-header {
+            margin-bottom: 40px;
+        }
+
+        .gallery-label {
+            font-family: 'Darker Grotesque', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #ff6900;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .gallery-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            color: #F5F5F0;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .gallery-description {
+            font-family: 'Darker Grotesque', sans-serif;
+            font-size: 17px;
+            color: #CCCCCC;
+            max-width: 600px;
+        }
+
+        /* Gallery Container */
+        .gallery-wrapper {
+            position: relative;
+        }
+
+        .vehicle-gallery {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 10px 0 35px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Custom Scrollbar */
+        .vehicle-gallery::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .vehicle-gallery::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin: 0 10px;
+        }
+
+        .vehicle-gallery::-webkit-scrollbar-thumb {
+            background: #ff6900;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .vehicle-gallery::-webkit-scrollbar-thumb:hover {
+            background: #ff8533;
+        }
+
+        /* Gallery Items */
+        .gallery-item {
+            flex: 0 0 420px;
+            height: 520px;
+            scroll-snap-align: start;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(255, 105, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Gradient Border Effect */
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(135deg, #ff6900, #ff8533, #ffa366);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Overlay */
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.7) 50%, transparent 100%);
+            padding: 35px 28px;
+            transform: translateY(15px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 600;
+            color: #F5F5F0;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .gallery-overlay p {
+            font-family: 'Darker Grotesque', sans-serif;
+            font-size: 15px;
+            color: #CCCCCC;
+            line-height: 1.5;
+        }
+
+        .gallery-overlay .price-tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 14px;
+            background: rgba(255, 105, 0, 0.15);
+            border: 1px solid #ff6900;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ff6900;
+        }
+
+        /* Navigation Controls */
+        .gallery-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .scroll-indicator {
+            font-size: 13px;
+            color: #CCCCCC;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-indicator.hidden {
+            opacity: 0;
+        }
+
+        .scroll-indicator svg {
+            width: 16px;
+            height: 16px;
+            animation: slideRight 2s ease-in-out infinite;
+        }
+
+        @keyframes slideRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 105, 0, 0.3);
+            background: rgba(255, 105, 0, 0.1);
+            color: #ff6900;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: #ff6900;
+            color: #0A0A0A;
+            border-color: #ff6900;
+            transform: scale(1.08);
+            box-shadow: 0 5px 20px rgba(255, 105, 0, 0.4);
+        }
+
+        .nav-btn:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .vehicle-gallery-section {
+                padding: 60px 40px;
+            }
+
+            .gallery-item {
+                flex: 0 0 360px;
+                height: 460px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vehicle-gallery-section {
+                padding: 50px 25px;
+            }
+
+            .gallery-title {
+                font-size: 32px;
+            }
+
+            .gallery-item {
+                flex: 0 0 300px;
+                height: 400px;
+            }
+
+            .nav-buttons {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vehicle-gallery-section {
+                padding: 40px 20px;
+            }
+
+            .gallery-item {
+                flex: 0 0 260px;
+                height: 360px;
+            }
+
+            .gallery-overlay h3 {
+                font-size: 22px;
+            }
+
+            .gallery-overlay p {
+                font-size: 14px;
+            }
+        }
+
+        /* ============================================
+           END GALLERY SECTION
+           ============================================ */
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         GALLERY SECTION COMPONENT
+         Copy this entire section into your page
+         ============================================ -->
+    
+    <section class="vehicle-gallery-section">
+        <div class="gallery-header">
+            <span class="gallery-label">Our Fleet</span>
+            <h2 class="gallery-title">Premium Luxury Vehicles</h2>
+            <p class="gallery-description">Explore our collection of handpicked luxury vehicles, each offering unparalleled comfort and style</p>
+        </div>
+
+        <div class="gallery-wrapper">
+            <div class="vehicle-gallery" id="vehicleGallery">
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=800&q=80" alt="Mercedes S-Class">
+                    <div class="gallery-overlay">
+                        <h3>Mercedes S-Class</h3>
+                        <p>Executive sedan with cutting-edge technology and supreme comfort</p>
+                        <span class="price-tag">$450/day</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1617531653520-bd466cce5c3d?w=800&q=80" alt="BMW 7 Series">
+                    <div class="gallery-overlay">
+                        <h3>BMW 7 Series</h3>
+                        <p>Sophisticated luxury paired with dynamic performance</p>
+                        <span class="price-tag">$420/day</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=800&q=80" alt="Range Rover">
+                    <div class="gallery-overlay">
+                        <h3>Range Rover</h3>
+                        <p>Ultimate luxury SUV for any terrain or occasion</p>
+                        <span class="price-tag">$480/day</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80" alt="Porsche Panamera">
+                    <div class="gallery-overlay">
+                        <h3>Porsche Panamera</h3>
+                        <p>Sports sedan delivering exhilarating performance</p>
+                        <span class="price-tag">$550/day</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=800&q=80" alt="Audi A8">
+                    <div class="gallery-overlay">
+                        <h3>Audi A8</h3>
+                        <p>German engineering meets refined elegance</p>
+                        <span class="price-tag">$430/day</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=80" alt="Bentley Continental">
+                    <div class="gallery-overlay">
+                        <h3>Bentley Continental GT</h3>
+                        <p>Handcrafted British luxury in its finest form</p>
+                        <span class="price-tag">$750/day</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="gallery-controls">
+            <div class="scroll-indicator" id="scrollIndicator">
+                <span>Scroll to explore</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-btn" id="prevBtn" aria-label="Previous">←</button>
+                <button class="nav-btn" id="nextBtn" aria-label="Next">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GALLERY SECTION SCRIPT
+         Include this script with your section
+         ============================================ -->
+    
+    <script>
+        (function() {
+            const gallery = document.getElementById('vehicleGallery');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const scrollIndicator = document.getElementById('scrollIndicator');
+
+            const scrollAmount = 440; // Scroll by one item width + gap
+
+            // Previous button
+            prevBtn.addEventListener('click', () => {
+                gallery.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Next button
+            nextBtn.addEventListener('click', () => {
+                gallery.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Update button states and scroll indicator
+            function updateControls() {
+                const scrollLeft = gallery.scrollLeft;
+                const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+
+                // Disable buttons at edges
+                prevBtn.disabled = scrollLeft <= 0;
+                nextBtn.disabled = scrollLeft >= maxScroll - 10;
+
+                // Hide scroll indicator when at the end
+                if (scrollLeft >= maxScroll - 10) {
+                    scrollIndicator.classList.add('hidden');
+                } else {
+                    scrollIndicator.classList.remove('hidden');
+                }
+            }
+
+            // Listen for scroll events
+            gallery.addEventListener('scroll', updateControls);
+
+            // Initial state
+            updateControls();
+
+            // Optional: Click on item to select (add your own logic)
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    // Add your selection logic here
+                    console.log('Item clicked:', this.querySelector('h3').textContent);
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

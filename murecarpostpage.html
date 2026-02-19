@@ -1,0 +1,1327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ford Ranger — Murecar Logistics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --orange: #e8650a;
+        --orange-light: #ff7a1a;
+        --dark: #0a0a0a;
+        --dark-2: #111111;
+        --dark-3: #1a1a1a;
+        --dark-4: #242424;
+        --white: #ffffff;
+        --white-60: rgba(255, 255, 255, 0.6);
+        --white-20: rgba(255, 255, 255, 0.12);
+        --white-10: rgba(255, 255, 255, 0.07);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--dark);
+        color: var(--white);
+        font-family: "DM Sans", sans-serif;
+        font-weight: 400;
+        overflow-x: hidden;
+      }
+
+      /* ── TOPBAR ── */
+      .topbar {
+        background: #000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 60px;
+        font-size: 13px;
+        color: var(--white-60);
+        border-bottom: 1px solid var(--white-10);
+      }
+      .topbar a {
+        color: var(--white-60);
+        text-decoration: none;
+        margin-right: 24px;
+      }
+      .topbar a:hover {
+        color: var(--orange);
+      }
+      .topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .topbar-right svg {
+        width: 15px;
+        height: 15px;
+        fill: var(--white-60);
+        cursor: pointer;
+        transition: fill 0.2s;
+      }
+      .topbar-right svg:hover {
+        fill: var(--orange);
+      }
+
+      /* ── NAV ── */
+      nav {
+        background: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 60px;
+        height: 80px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-icon {
+        width: 52px;
+        height: 52px;
+        background: var(--dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--orange);
+        letter-spacing: 1px;
+      }
+      .logo-text {
+        font-family: "Playfair Display", serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--dark);
+        line-height: 1.2;
+      }
+      .logo-text span {
+        display: block;
+        font-size: 10px;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 400;
+        color: #666;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .nav-links {
+        display: flex;
+        gap: 36px;
+      }
+      .nav-links a {
+        font-size: 14px;
+        font-weight: 500;
+        color: #444;
+        text-decoration: none;
+        letter-spacing: 0.3px;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--dark);
+      }
+      .nav-links a.active {
+        border-bottom: 2px solid var(--orange);
+        padding-bottom: 2px;
+      }
+      .nav-cta {
+        background: var(--orange);
+        color: #fff;
+        border: none;
+        padding: 12px 28px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .nav-cta:hover {
+        background: var(--orange-light);
+        transform: translateY(-1px);
+      }
+
+      /* ── BREADCRUMB ── */
+      .breadcrumb {
+        background: var(--dark-2);
+        padding: 16px 60px;
+        border-bottom: 1px solid var(--white-10);
+        font-size: 13px;
+        color: var(--white-60);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .breadcrumb a {
+        color: var(--white-60);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--orange);
+      }
+      .breadcrumb .sep {
+        color: var(--white-20);
+      }
+      .breadcrumb .current {
+        color: var(--white);
+      }
+
+      /* ── HERO STRIP ── */
+      .vehicle-hero {
+        background: var(--dark-2);
+        padding: 60px 60px 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .vehicle-hero::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(232, 101, 10, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .hero-label {
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--orange);
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(32px, 4vw, 52px);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 8px;
+      }
+      .hero-subtitle {
+        font-size: 15px;
+        color: var(--white-60);
+        margin-bottom: 28px;
+      }
+      .hero-badges {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .badge {
+        padding: 5px 14px;
+        border: 1px solid var(--white-20);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--white-60);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .badge.green {
+        border-color: #22c55e;
+        color: #22c55e;
+        background: rgba(34, 197, 94, 0.08);
+      }
+      .badge.orange {
+        border-color: var(--orange);
+        color: var(--orange);
+        background: rgba(232, 101, 10, 0.08);
+      }
+
+      /* ── MAIN LAYOUT ── */
+      .vehicle-main {
+        display: grid;
+        grid-template-columns: 1fr 440px;
+        gap: 0;
+        padding: 0 60px 80px;
+        background: var(--dark-2);
+      }
+
+      /* ── GALLERY ── */
+      .gallery-col {
+        padding-right: 48px;
+        padding-top: 40px;
+      }
+      .main-image-wrap {
+        position: relative;
+        overflow: hidden;
+        cursor: zoom-in;
+        width: 100%;
+        max-height: 380px;
+        background: var(--dark-3);
+      }
+      .main-image-wrap::after {
+        content: "⤢";
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .main-image-wrap:hover::after {
+        opacity: 1;
+      }
+      .main-image-wrap img {
+        transition: transform 0.5s ease;
+        display: block;
+        width: 100%;
+        height: 340px;
+        object-fit: cover;
+      }
+      .main-image-wrap:hover img {
+        transform: scale(1.03);
+      }
+
+      .thumb-row {
+        display: flex;
+        gap: 6px;
+        margin-top: 6px;
+      }
+      .thumb {
+        flex: 1;
+        height: 72px;
+        object-fit: cover;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        border: 1px solid transparent;
+        display: block;
+      }
+      .thumb:hover,
+      .thumb.active {
+        opacity: 1;
+        border-color: var(--orange);
+      }
+
+      /* vehicle specs */
+      .specs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--white-10);
+        border: 1px solid var(--white-10);
+        margin-top: 32px;
+      }
+      .spec-item {
+        background: var(--dark-3);
+        padding: 18px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .spec-label {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--white-60);
+      }
+      .spec-value {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--white);
+      }
+      .spec-icon {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+
+      /* features */
+      .features-section {
+        margin-top: 36px;
+      }
+      .section-heading {
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--orange);
+        font-weight: 600;
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--white-10);
+      }
+      .features-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 24px;
+      }
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--white-60);
+      }
+      .feature-item::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--orange);
+        flex-shrink: 0;
+      }
+
+      /* description */
+      .description-section {
+        margin-top: 36px;
+      }
+      .description-section p {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--white-60);
+      }
+
+      /* ── BOOKING PANEL ── */
+      .booking-col {
+        padding-top: 40px;
+        position: relative;
+      }
+      .booking-card {
+        background: var(--dark);
+        border: 1px solid var(--white-10);
+        padding: 36px 32px;
+        position: sticky;
+        top: 100px;
+      }
+      .booking-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      }
+
+      .price-row {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+      .price-amount {
+        font-family: "Playfair Display", serif;
+        font-size: 38px;
+        font-weight: 700;
+        color: var(--orange);
+        line-height: 1;
+      }
+      .price-unit {
+        font-size: 14px;
+        color: var(--white-60);
+        margin-bottom: 6px;
+      }
+      .price-note {
+        font-size: 12px;
+        color: var(--white-60);
+        margin-bottom: 24px;
+      }
+
+      .availability-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        background: rgba(34, 197, 94, 0.07);
+        border: 1px solid rgba(34, 197, 94, 0.2);
+        margin-bottom: 12px;
+      }
+      .avail-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+        flex-shrink: 0;
+      }
+      .avail-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: #22c55e;
+      }
+
+      .next-avail {
+        padding: 10px 16px;
+        background: var(--dark-3);
+        border: 1px solid var(--white-10);
+        font-size: 12px;
+        color: var(--white-60);
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .next-avail strong {
+        color: var(--white);
+      }
+
+      .divider {
+        height: 1px;
+        background: var(--white-10);
+        margin: 24px 0;
+      }
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+      .form-label {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--white-60);
+        margin-bottom: 8px;
+      }
+      .form-input {
+        width: 100%;
+        background: var(--dark-3);
+        border: 1px solid var(--white-20);
+        color: var(--white);
+        padding: 13px 16px;
+        font-size: 14px;
+        font-family: "DM Sans", sans-serif;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .form-input::placeholder {
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .form-input:focus {
+        border-color: var(--orange);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .btn-book {
+        width: 100%;
+        background: var(--orange);
+        color: #fff;
+        border: none;
+        padding: 16px;
+        font-size: 15px;
+        font-weight: 700;
+        font-family: "DM Sans", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        margin-top: 8px;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-book::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.08);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+      .btn-book:hover::after {
+        transform: scaleX(1);
+      }
+      .btn-book:hover {
+        background: var(--orange-light);
+        transform: translateY(-1px);
+      }
+
+      .btn-whatsapp {
+        width: 100%;
+        background: transparent;
+        color: #25d366;
+        border: 1px solid #25d366;
+        padding: 13px;
+        font-size: 13px;
+        font-weight: 600;
+        font-family: "DM Sans", sans-serif;
+        cursor: pointer;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: background 0.2s;
+      }
+      .btn-whatsapp:hover {
+        background: rgba(37, 211, 102, 0.1);
+      }
+
+      .trust-row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--white-10);
+      }
+      .trust-item {
+        text-align: center;
+      }
+      .trust-item .t-val {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--white);
+      }
+      .trust-item .t-lbl {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--white-60);
+        margin-top: 2px;
+      }
+
+      /* ── RELATED ── */
+      .related-section {
+        padding: 60px 60px;
+        background: var(--dark);
+        border-top: 1px solid var(--white-10);
+      }
+      .related-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 36px;
+      }
+      .related-header h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        font-weight: 700;
+      }
+      .related-header a {
+        font-size: 13px;
+        color: var(--orange);
+        text-decoration: none;
+        letter-spacing: 1px;
+      }
+      .related-header a:hover {
+        text-decoration: underline;
+      }
+
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--white-10);
+      }
+      .related-card {
+        background: var(--dark-2);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .related-card:hover .related-img {
+        transform: scale(1.05);
+      }
+      .related-img-wrap {
+        overflow: hidden;
+        aspect-ratio: 16/10;
+      }
+      .related-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      .related-info {
+        padding: 20px 22px 24px;
+      }
+      .related-type {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 6px;
+      }
+      .related-name {
+        font-family: "Playfair Display", serif;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .related-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .related-price {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--orange);
+      }
+      .related-cta {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--white-60);
+        border-bottom: 1px solid var(--white-20);
+        padding-bottom: 2px;
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .related-cta:hover {
+        color: var(--orange);
+        border-color: var(--orange);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: #000;
+        border-top: 1px solid var(--white-10);
+        padding: 20px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: var(--white-60);
+      }
+      footer a {
+        color: var(--orange);
+        text-decoration: none;
+      }
+
+      /* ── WHATSAPP FLOAT ── */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 999;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #25d366;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        cursor: pointer;
+        animation: pulse 2.5s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        }
+        50% {
+          box-shadow: 0 4px 30px rgba(37, 211, 102, 0.65);
+        }
+      }
+      .whatsapp-float svg {
+        width: 26px;
+        height: 26px;
+        fill: white;
+      }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-up {
+        animation: fadeUp 0.6s ease both;
+      }
+      .delay-1 {
+        animation-delay: 0.1s;
+      }
+      .delay-2 {
+        animation-delay: 0.2s;
+      }
+      .delay-3 {
+        animation-delay: 0.3s;
+      }
+
+      @media (max-width: 1024px) {
+        .vehicle-main {
+          grid-template-columns: 1fr;
+          padding: 0 20px 60px;
+        }
+        .gallery-col {
+          padding-right: 0;
+        }
+        .booking-col {
+          padding-top: 0;
+        }
+        .booking-card {
+          position: relative;
+          top: 0;
+        }
+        nav {
+          padding: 0 20px;
+        }
+        .nav-links {
+          gap: 20px;
+        }
+        .topbar,
+        .vehicle-hero,
+        .breadcrumb,
+        .related-section,
+        footer {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .related-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .specs-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .main-image-wrap img {
+          height: 260px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .topbar {
+          display: none;
+        }
+        nav {
+          padding: 0 16px;
+          height: 64px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .logo-text {
+          font-size: 13px;
+        }
+        .vehicle-hero {
+          padding: 32px 16px 0;
+        }
+        .hero-title {
+          font-size: 26px;
+        }
+        .vehicle-main {
+          padding: 0 16px 48px;
+        }
+        .gallery-col {
+          padding-top: 24px;
+        }
+        .main-image-wrap img {
+          height: 220px;
+        }
+        .thumb {
+          height: 56px;
+        }
+        .specs-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .features-list {
+          grid-template-columns: 1fr;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .booking-card {
+          padding: 24px 18px;
+        }
+        .price-amount {
+          font-size: 28px;
+        }
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+        .related-section,
+        footer {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .breadcrumb {
+          padding: 12px 16px;
+          font-size: 12px;
+        }
+        footer {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+        .trust-row {
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div>
+        <a href="tel:+254700123456">📞 +254 700 123 456</a>
+        <a href="mailto:info@murecar.com">✉ info@murecar.com</a>
+      </div>
+      <div class="topbar-right">
+        <span>📍 Nairobi, Kenya</span>
+        <!-- Social icons -->
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+          />
+        </svg>
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+          />
+        </svg>
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25z"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+      <div class="logo">
+        <div class="logo-icon">MC</div>
+        <div class="logo-text">MURECAR<span>LOGISTICS</span></div>
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#" class="active">Fleet</a>
+        <a href="#">Services</a>
+        <a href="#">Pricing</a>
+      </div>
+      <button class="nav-cta">Contact Us</button>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="#">Home</a>
+      <span class="sep">›</span>
+      <a href="#">Fleet</a>
+      <span class="sep">›</span>
+      <a href="#">Pickup Trucks</a>
+      <span class="sep">›</span>
+      <span class="current">Ford Ranger</span>
+    </div>
+
+    <!-- HERO -->
+    <div class="vehicle-hero">
+      <p class="hero-label fade-up">Pickup Truck · Commercial Fleet</p>
+      <h1 class="hero-title fade-up delay-1">Ford Ranger</h1>
+      <p class="hero-subtitle fade-up delay-2">
+        Double Cab · 2022 · Automatic · Diesel
+      </p>
+      <div class="hero-badges fade-up delay-3">
+        <span class="badge green">● Available Now</span>
+        <span class="badge orange">Top Rated</span>
+        <span class="badge">4×4 Capable</span>
+        <span class="badge">Driver Available</span>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="vehicle-main">
+      <!-- GALLERY + DETAILS -->
+      <div class="gallery-col fade-up">
+        <div class="main-image-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80"
+            alt="Ford Ranger"
+            id="mainImg"
+          />
+        </div>
+        <div class="thumb-row">
+          <img
+            class="thumb active"
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=70"
+            onclick="
+              setImg(
+                this,
+                'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',
+              )
+            "
+            alt=""
+          />
+          <img
+            class="thumb"
+            src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=300&q=70"
+            onclick="
+              setImg(
+                this,
+                'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=900&q=80',
+              )
+            "
+            alt=""
+          />
+          <img
+            class="thumb"
+            src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=300&q=70"
+            onclick="
+              setImg(
+                this,
+                'https://images.unsplash.com/photo-1493238792000-8113da705763?w=900&q=80',
+              )
+            "
+            alt=""
+          />
+          <img
+            class="thumb"
+            src="https://images.unsplash.com/photo-1520031441872-265e4ff70366?w=300&q=70"
+            onclick="
+              setImg(
+                this,
+                'https://images.unsplash.com/photo-1520031441872-265e4ff70366?w=900&q=80',
+              )
+            "
+            alt=""
+          />
+        </div>
+
+        <!-- SPECS -->
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="spec-icon">⛽</div>
+            <div class="spec-label">Fuel Type</div>
+            <div class="spec-value">Diesel</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon">⚙️</div>
+            <div class="spec-label">Transmission</div>
+            <div class="spec-value">Automatic</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon">🛞</div>
+            <div class="spec-label">Drive</div>
+            <div class="spec-value">4WD</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon">🗓️</div>
+            <div class="spec-label">Year</div>
+            <div class="spec-value">2022</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon">🪑</div>
+            <div class="spec-label">Seats</div>
+            <div class="spec-value">5 Passengers</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon">📦</div>
+            <div class="spec-label">Payload</div>
+            <div class="spec-value">1,000 kg</div>
+          </div>
+        </div>
+
+        <!-- FEATURES -->
+        <div class="features-section">
+          <div class="section-heading">Vehicle Features</div>
+          <div class="features-list">
+            <div class="feature-item">Air Conditioning</div>
+            <div class="feature-item">Bluetooth Audio</div>
+            <div class="feature-item">Rear Camera</div>
+            <div class="feature-item">Power Windows</div>
+            <div class="feature-item">GPS Navigation</div>
+            <div class="feature-item">Cruise Control</div>
+            <div class="feature-item">Roof Rack</div>
+            <div class="feature-item">Tow Bar</div>
+            <div class="feature-item">Bull Bar</div>
+            <div class="feature-item">Electric Mirrors</div>
+          </div>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="description-section" style="margin-top: 36px">
+          <div class="section-heading">About This Vehicle</div>
+          <p>
+            The Ford Ranger Double Cab is the perfect blend of utility and
+            comfort. Whether you need reliable transport across Nairobi's urban
+            landscape or a capable off-road companion to reach remote
+            destinations across Kenya, this vehicle handles it with ease.
+            Equipped with a powerful turbocharged diesel engine, automatic
+            gearbox, and full 4×4 capability, it's ready for any terrain.
+          </p>
+          <p style="margin-top: 14px">
+            Ideal for corporate logistics, safari expeditions, construction site
+            access, and cross-country trips. A professional driver is available
+            on request.
+          </p>
+        </div>
+      </div>
+
+      <!-- BOOKING PANEL -->
+      <div class="booking-col fade-up delay-2">
+        <div class="booking-card">
+          <div class="price-row">
+            <div class="price-amount">KSh 15,000</div>
+            <div class="price-unit">/ day</div>
+          </div>
+          <div class="price-note">
+            Driver included · 200km/day limit · Insurance covered
+          </div>
+
+          <div class="availability-row">
+            <div class="avail-dot"></div>
+            <div class="avail-text">Available Now</div>
+          </div>
+          <div class="next-avail">
+            📅 Next available from: <strong>20/02/2026</strong>
+          </div>
+
+          <div class="divider"></div>
+
+          <form onsubmit="handleBook(event)">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input
+                class="form-input"
+                type="text"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input
+                class="form-input"
+                type="tel"
+                placeholder="e.g. 0712 345 678"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Pickup Date</label>
+                <input class="form-input" type="date" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Return Date</label>
+                <input class="form-input" type="date" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Pickup Location</label>
+              <input
+                class="form-input"
+                type="text"
+                placeholder="e.g. JKIA, CBD, Westlands"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Add Driver?</label>
+              <select class="form-input">
+                <option value="">No, self-drive</option>
+                <option value="driver">
+                  Yes, include driver (+KSh 3,000/day)
+                </option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn-book">
+              Reserve This Vehicle →
+            </button>
+          </form>
+
+          <button
+            class="btn-whatsapp"
+            onclick="
+              window.open(
+                'https://wa.me/254700123456?text=Hi, I am interested in the Ford Ranger pickup',
+                '_blank',
+              )
+            "
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              />
+            </svg>
+            Chat on WhatsApp
+          </button>
+
+          <div class="trust-row">
+            <div class="trust-item">
+              <div class="t-val">500+</div>
+              <div class="t-lbl">Happy Clients</div>
+            </div>
+            <div class="trust-item">
+              <div class="t-val">4.9★</div>
+              <div class="t-lbl">Rating</div>
+            </div>
+            <div class="trust-item">
+              <div class="t-val">24/7</div>
+              <div class="t-lbl">Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATED VEHICLES -->
+    <div class="related-section">
+      <div class="related-header">
+        <h2>Similar Vehicles</h2>
+        <a href="#">View All Fleet →</a>
+      </div>
+      <div class="related-grid">
+        <div class="related-card">
+          <div class="related-img-wrap">
+            <img
+              class="related-img"
+              src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&q=75"
+              alt="Toyota Land Cruiser"
+            />
+          </div>
+          <div class="related-info">
+            <div class="related-type">SUV · Premium</div>
+            <div class="related-name">Toyota Land Cruiser</div>
+            <div class="related-bottom">
+              <div class="related-price">KSh 22,000/day</div>
+              <a class="related-cta" href="#">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="related-card">
+          <div class="related-img-wrap">
+            <img
+              class="related-img"
+              src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=600&q=75"
+              alt="Toyota Hilux"
+            />
+          </div>
+          <div class="related-info">
+            <div class="related-type">Pickup · Utility</div>
+            <div class="related-name">Toyota Hilux</div>
+            <div class="related-bottom">
+              <div class="related-price">KSh 12,000/day</div>
+              <a class="related-cta" href="#">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="related-card">
+          <div class="related-img-wrap">
+            <img
+              class="related-img"
+              src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=75"
+              alt="Mercedes Benz Sprinter"
+            />
+          </div>
+          <div class="related-info">
+            <div class="related-type">Van · Cargo</div>
+            <div class="related-name">Mercedes Sprinter</div>
+            <div class="related-bottom">
+              <div class="related-price">KSh 18,000/day</div>
+              <a class="related-cta" href="#">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>© 2026 Murecar Logistics. All rights reserved.</span>
+      <span
+        >Nairobi, Kenya · <a href="tel:+254700123456">+254 700 123 456</a> ·
+        <a href="mailto:info@murecar.com">info@murecar.com</a></span
+      >
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <div
+      class="whatsapp-float"
+      onclick="window.open('https://wa.me/254700123456', '_blank')"
+    >
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </svg>
+    </div>
+
+    <script>
+      function setImg(el, src) {
+        document.getElementById("mainImg").src = src;
+        document
+          .querySelectorAll(".thumb")
+          .forEach((t) => t.classList.remove("active"));
+        el.classList.add("active");
+      }
+      function handleBook(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector(".btn-book");
+        btn.textContent = "✓ Booking Request Sent!";
+        btn.style.background = "#22C55E";
+        setTimeout(() => {
+          btn.textContent = "Reserve This Vehicle →";
+          btn.style.background = "";
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
+
+<!--    -->
+/* form for booking */ /* ===== MURECAR LUXURY BOOKING PANEL ===== */
+.murecar-booking { font-family: 'Montserrat', sans-serif; background: #0A0A0A;
+color: #F5F5F0; padding: 40px; border-radius: 0px; border: 1px solid
+rgba(255,255,255,0.08); max-width: 520px; margin: 40px auto; } /* HEADER */
+.murecar-booking .vehicle-header { display: flex; justify-content:
+space-between; align-items: center; border-bottom: 1px solid
+rgba(255,255,255,0.08); padding-bottom: 14px; margin-bottom: 18px; }
+.murecar-booking h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px;
+margin: 0; } .murecar-booking .vehicle-price { font-size: 22px; font-weight:
+600; color: #ff6900; } .murecar-booking .vehicle-price span { font-size: 14px;
+color: #aaa; } /* META */ .murecar-booking .vehicle-meta { margin-bottom: 20px;
+font-size: 14px; } .murecar-booking .status.available { color: #22c55e;
+font-weight: 600; } /* INPUTS */ .murecar-booking label { display: block;
+font-size: 13px; letter-spacing: 1px; margin-top: 16px; } .murecar-booking
+input, .murecar-booking textarea { width: 100%; background: transparent; border:
+none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #F5F5F0; padding:
+12px 0; margin-top: 6px; border-radius: 0px; } .murecar-booking input:focus,
+.murecar-booking textarea:focus { outline: none; border-bottom: 1px solid
+#ff6900; } /* BUTTONS */ .murecar-booking .booking-buttons { display: flex; gap:
+12px; margin-top: 28px; } /* BOOK BUTTON (PRIMARY ORANGE) */ .murecar-booking
+input[type="submit"] { background: #ff6900; color: #0A0A0A; border: none;
+padding: 16px 28px; font-weight: 600; letter-spacing: 1px; text-transform:
+uppercase; cursor: pointer; border-radius: 0px; transition: all 0.3s ease; }
+.murecar-booking input[type="submit"]:hover { transform: translateY(-2px); } /*
+WHATSAPP BUTTON */ #murecar-booking #whatsapp-book, .murecar-booking
+#whatsapp-book { background: #22c55e; color: #0A0A0A; border: none; padding:
+16px 24px; font-weight: 600; cursor: pointer; border-radius: 0px; } /* CALL
+BUTTON */ .murecar-booking .call-button { background: #16a34a; color: #0A0A0A;
+text-decoration: none; padding: 16px 24px; font-weight: 600; display:
+inline-block; border-radius: 0px; } /* MOBILE */ @media (max-width: 600px) {
+.murecar-booking { padding: 28px; } .murecar-booking .booking-buttons {
+flex-direction: column; } }
