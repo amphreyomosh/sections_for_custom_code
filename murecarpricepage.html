@@ -1,0 +1,1950 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing — Murecar Logistics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --orange: #e8650a;
+        --orange-light: #ff7a1a;
+        --dark: #0a0a0a;
+        --dark-2: #111111;
+        --dark-3: #1a1a1a;
+        --dark-4: #242424;
+        --white: #ffffff;
+        --white-80: rgba(255, 255, 255, 0.8);
+        --white-60: rgba(255, 255, 255, 0.6);
+        --white-20: rgba(255, 255, 255, 0.12);
+        --white-10: rgba(255, 255, 255, 0.07);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--dark);
+        color: var(--white);
+        font-family: "DM Sans", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* ── TOPBAR ── */
+      .topbar {
+        background: #000;
+        padding: 10px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: var(--white-60);
+        border-bottom: 1px solid var(--white-10);
+      }
+      .topbar a {
+        color: var(--white-60);
+        text-decoration: none;
+        margin-right: 20px;
+      }
+      .topbar a:hover {
+        color: var(--orange);
+      }
+      .topbar-right {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+
+      /* ── NAV ── */
+      nav {
+        background: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 60px;
+        height: 80px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-circle {
+        width: 48px;
+        height: 48px;
+        background: var(--dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--orange);
+        letter-spacing: 1px;
+      }
+      .logo-text {
+        font-family: "Playfair Display", serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--dark);
+        line-height: 1.2;
+      }
+      .logo-text span {
+        display: block;
+        font-size: 10px;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 400;
+        color: #888;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .nav-links {
+        display: flex;
+        gap: 36px;
+      }
+      .nav-links a {
+        font-size: 14px;
+        font-weight: 500;
+        color: #444;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--dark);
+      }
+      .nav-links a.active {
+        color: var(--dark);
+        border-bottom: 2px solid var(--orange);
+        padding-bottom: 2px;
+      }
+      .nav-cta {
+        background: var(--orange);
+        color: #fff;
+        border: none;
+        padding: 12px 28px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+        transition: background 0.2s;
+      }
+      .nav-cta:hover {
+        background: var(--orange-light);
+      }
+
+      /* ── PAGE HERO ── */
+      .page-hero {
+        background: var(--dark-2);
+        padding: 72px 60px 56px;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--white-10);
+      }
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(232, 101, 10, 0.1) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .page-hero::after {
+        content: "PRICING";
+        position: absolute;
+        right: 60px;
+        bottom: -20px;
+        font-family: "Playfair Display", serif;
+        font-size: 120px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.025);
+        letter-spacing: 10px;
+        user-select: none;
+      }
+      .hero-label {
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--orange);
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(36px, 5vw, 64px);
+        font-weight: 700;
+        line-height: 1.05;
+        margin-bottom: 20px;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--orange);
+      }
+      .hero-subtitle {
+        font-size: 16px;
+        color: var(--white-60);
+        max-width: 520px;
+        line-height: 1.7;
+      }
+
+      /* ── TOGGLE ── */
+      .toggle-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        padding: 48px 0 32px;
+      }
+      .toggle-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--white-60);
+      }
+      .toggle-label.active {
+        color: var(--white);
+      }
+      .toggle {
+        width: 56px;
+        height: 28px;
+        background: var(--dark-4);
+        border: 1px solid var(--white-20);
+        border-radius: 14px;
+        position: relative;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .toggle.on {
+        background: var(--orange);
+        border-color: var(--orange);
+      }
+      .toggle-knob {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--white);
+        transition: transform 0.3s;
+      }
+      .toggle.on .toggle-knob {
+        transform: translateX(28px);
+      }
+      .save-badge {
+        background: rgba(232, 101, 10, 0.15);
+        border: 1px solid var(--orange);
+        color: var(--orange);
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 10px;
+        letter-spacing: 1px;
+      }
+
+      /* ── PRICING GRID ── */
+      .pricing-section {
+        padding: 0 60px 80px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* category label */
+      .category-label {
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--orange);
+        font-weight: 600;
+        margin-bottom: 28px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--white-10);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .category-label::before {
+        content: "";
+        width: 32px;
+        height: 1px;
+        background: var(--orange);
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--white-10);
+        margin-bottom: 64px;
+      }
+
+      .price-card {
+        background: var(--dark-2);
+        padding: 32px 28px 36px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.3s;
+        cursor: pointer;
+      }
+      .price-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: transparent;
+        transition: background 0.3s;
+      }
+      .price-card:hover {
+        background: var(--dark-3);
+      }
+      .price-card:hover::before {
+        background: var(--orange);
+      }
+      .price-card.featured {
+        background: var(--dark-3);
+      }
+      .price-card.featured::before {
+        background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      }
+
+      .featured-tag {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: var(--orange);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 10px;
+      }
+
+      .card-icon {
+        font-size: 28px;
+        margin-bottom: 16px;
+      }
+
+      .card-category {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+      .card-name {
+        font-family: "Playfair Display", serif;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        line-height: 1.2;
+      }
+      .card-desc {
+        font-size: 13px;
+        color: var(--white-60);
+        line-height: 1.6;
+        margin-bottom: 24px;
+        min-height: 40px;
+      }
+
+      .card-price {
+        display: flex;
+        align-items: flex-end;
+        gap: 6px;
+        margin-bottom: 4px;
+      }
+      .price-num {
+        font-family: "Playfair Display", serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--orange);
+        line-height: 1;
+      }
+      .price-period {
+        font-size: 13px;
+        color: var(--white-60);
+        margin-bottom: 5px;
+      }
+      .price-note {
+        font-size: 11px;
+        color: var(--white-60);
+        margin-bottom: 24px;
+      }
+
+      .card-divider {
+        height: 1px;
+        background: var(--white-10);
+        margin-bottom: 20px;
+      }
+
+      .card-features {
+        list-style: none;
+        margin-bottom: 28px;
+      }
+      .card-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: var(--white-60);
+        padding: 6px 0;
+        border-bottom: 1px solid var(--white-10);
+      }
+      .card-features li:last-child {
+        border-bottom: none;
+      }
+      .card-features li::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--orange);
+        flex-shrink: 0;
+      }
+      .card-features li.no::before {
+        background: #555;
+      }
+      .card-features li.no {
+        color: #444;
+        text-decoration: line-through;
+      }
+
+      .card-btn {
+        display: block;
+        width: 100%;
+        background: transparent;
+        border: 1px solid var(--white-20);
+        color: var(--white-60);
+        padding: 13px;
+        font-size: 13px;
+        font-weight: 600;
+        font-family: "DM Sans", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .card-btn:hover,
+      .price-card.featured .card-btn {
+        background: var(--orange);
+        border-color: var(--orange);
+        color: #fff;
+      }
+      .price-card.featured .card-btn:hover {
+        background: var(--orange-light);
+        border-color: var(--orange-light);
+      }
+
+      /* ── ADD-ONS ── */
+      .addons-section {
+        padding: 0 60px 80px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .addons-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--white-10);
+      }
+      .addon-card {
+        background: var(--dark-2);
+        padding: 24px 22px;
+        transition: background 0.2s;
+      }
+      .addon-card:hover {
+        background: var(--dark-3);
+      }
+      .addon-icon {
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+      .addon-name {
+        font-family: "Playfair Display", serif;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      .addon-desc {
+        font-size: 12px;
+        color: var(--white-60);
+        line-height: 1.5;
+        margin-bottom: 14px;
+      }
+      .addon-price {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--orange);
+      }
+      .addon-price span {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--white-60);
+      }
+
+      /* ── INCLUSIONS BANNER ── */
+      .inclusions {
+        background: var(--dark-3);
+        border-top: 1px solid var(--white-10);
+        border-bottom: 1px solid var(--white-10);
+        padding: 48px 60px;
+        margin-bottom: 80px;
+      }
+      .inclusions-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .inclusions h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      .inclusions h3 em {
+        font-style: italic;
+        color: var(--orange);
+      }
+      .inclusions-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .inclusion-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .inclusion-icon {
+        font-size: 20px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .inclusion-text strong {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .inclusion-text span {
+        font-size: 12px;
+        color: var(--white-60);
+      }
+
+      /* ── FAQ STRIP ── */
+      .faq-section {
+        padding: 0 60px 80px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .faq-header {
+        margin-bottom: 36px;
+      }
+      .faq-header h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 32px;
+        font-weight: 700;
+      }
+      .faq-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--white-10);
+      }
+      .faq-item {
+        background: var(--dark-2);
+        padding: 24px 28px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .faq-item:hover {
+        background: var(--dark-3);
+      }
+      .faq-q {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--white);
+        gap: 16px;
+      }
+      .faq-plus {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 1px solid var(--orange);
+        color: var(--orange);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+        transition:
+          transform 0.3s,
+          background 0.2s;
+      }
+      .faq-item.open .faq-plus {
+        transform: rotate(45deg);
+        background: var(--orange);
+        color: #fff;
+      }
+      .faq-a {
+        font-size: 13px;
+        color: var(--white-60);
+        line-height: 1.7;
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.35s ease,
+          padding 0.35s;
+      }
+      .faq-item.open .faq-a {
+        max-height: 200px;
+        padding-top: 14px;
+      }
+
+      /* ── CTA BANNER ── */
+      .cta-banner {
+        background: var(--dark-2);
+        border-top: 1px solid var(--white-10);
+        padding: 72px 60px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(232, 101, 10, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .cta-banner h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(28px, 4vw, 48px);
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+      .cta-banner h2 em {
+        font-style: italic;
+        color: var(--orange);
+      }
+      .cta-banner p {
+        font-size: 15px;
+        color: var(--white-60);
+        margin-bottom: 36px;
+      }
+      .cta-buttons {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        background: var(--orange);
+        color: #fff;
+        border: none;
+        padding: 15px 36px;
+        font-size: 14px;
+        font-weight: 700;
+        font-family: "DM Sans", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn-primary:hover {
+        background: var(--orange-light);
+        transform: translateY(-1px);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--white-60);
+        border: 1px solid var(--white-20);
+        padding: 15px 36px;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "DM Sans", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn-secondary:hover {
+        border-color: var(--white-60);
+        color: var(--white);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: #000;
+        border-top: 1px solid var(--white-10);
+        padding: 20px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: var(--white-60);
+      }
+      footer a {
+        color: var(--orange);
+        text-decoration: none;
+      }
+
+      /* ── WHATSAPP ── */
+      .wa-float {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 999;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #25d366;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        cursor: pointer;
+        animation: waPulse 2.5s infinite;
+      }
+      @keyframes waPulse {
+        0%,
+        100% {
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        }
+        50% {
+          box-shadow: 0 4px 32px rgba(37, 211, 102, 0.65);
+        }
+      }
+      .wa-float svg {
+        width: 26px;
+        height: 26px;
+        fill: #fff;
+      }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-up {
+        animation: fadeUp 0.6s ease both;
+      }
+      .d1 {
+        animation-delay: 0.1s;
+      }
+      .d2 {
+        animation-delay: 0.2s;
+      }
+      .d3 {
+        animation-delay: 0.3s;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 1024px) {
+        .pricing-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .addons-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .inclusions-inner {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .inclusions-list {
+          grid-template-columns: 1fr 1fr;
+        }
+        .faq-grid {
+          grid-template-columns: 1fr;
+        }
+        nav,
+        .topbar,
+        .page-hero,
+        .pricing-section,
+        .addons-section,
+        .inclusions,
+        .faq-section,
+        .cta-banner,
+        footer {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+      }
+      @media (max-width: 768px) {
+        .topbar {
+          display: none;
+        }
+        nav {
+          padding: 0 16px;
+          height: 64px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .page-hero {
+          padding: 40px 16px 36px;
+        }
+        .page-hero::after {
+          display: none;
+        }
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+        .addons-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .inclusions-list {
+          grid-template-columns: 1fr;
+        }
+        .pricing-section,
+        .addons-section,
+        .faq-section {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .cta-banner {
+          padding: 48px 16px;
+        }
+        footer {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+          padding: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div>
+        <a href="tel:+254700123456">📞 +254 700 123 456</a>
+        <a href="mailto:info@murecar.com">✉ info@murecar.com</a>
+      </div>
+      <div class="topbar-right">📍 Nairobi, Kenya</div>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+      <div class="logo">
+        <div class="logo-circle">MC</div>
+        <div class="logo-text">MURECAR<span>LOGISTICS</span></div>
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Fleet</a>
+        <a href="#">Services</a>
+        <a href="#" class="active">Pricing</a>
+      </div>
+      <button class="nav-cta">Contact Us</button>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <p class="hero-label fade-up">Transparent · No Hidden Fees</p>
+      <h1 class="hero-title fade-up d1">
+        Rates Built for <em>Every Journey</em>
+      </h1>
+      <p class="hero-subtitle fade-up d2">
+        From economy runs to executive transfers — clear, competitive pricing
+        for every vehicle class and trip type across Nairobi and beyond.
+      </p>
+    </div>
+
+    <!-- BILLING TOGGLE -->
+    <div class="toggle-section">
+      <span class="toggle-label active" id="lbl-daily">Daily Rate</span>
+      <div class="toggle" id="billingToggle" onclick="toggleBilling()">
+        <div class="toggle-knob"></div>
+      </div>
+      <span class="toggle-label" id="lbl-weekly">Weekly Rate</span>
+      <span class="save-badge">SAVE 15%</span>
+    </div>
+
+    <!-- PRICING CARDS -->
+    <div class="pricing-section">
+      <!-- ECONOMY -->
+      <div class="category-label">Economy & Compact</div>
+      <div class="pricing-grid">
+        <div class="price-card fade-up">
+          <div class="card-icon">🚗</div>
+          <div class="card-category">Economy</div>
+          <div class="card-name">Toyota Corolla</div>
+          <div class="card-desc">
+            Perfect for city errands and airport transfers. Fuel-efficient and
+            reliable.
+          </div>
+          <div class="card-price">
+            <div class="price-num" data-daily="5,000" data-weekly="29,750">
+              KSh 5,000
+            </div>
+            <div class="price-period">/ day</div>
+          </div>
+          <div class="price-note">Driver optional · 150km/day included</div>
+          <div class="card-divider"></div>
+          <ul class="card-features">
+            <li>Air Conditioning</li>
+            <li>Bluetooth Audio</li>
+            <li>Insurance Included</li>
+            <li>24/7 Roadside Support</li>
+            <li class="no">GPS Navigation</li>
+            <li class="no">Driver Included</li>
+          </ul>
+          <a href="#" class="card-btn">Book This Vehicle</a>
+        </div>
+
+        <div class="price-card fade-up d1 featured">
+          <div class="featured-tag">Most Popular</div>
+          <div class="card-icon">🚙</div>
+          <div class="card-category">Compact SUV</div>
+          <div class="card-name">Toyota RAV4</div>
+          <div class="card-desc">
+            Versatile city and highway SUV, great for families and business
+            travel.
+          </div>
+          <div class="card-price">
+            <div class="price-num" data-daily="8,500" data-weekly="50,575">
+              KSh 8,500
+            </div>
+            <div class="price-period">/ day</div>
+          </div>
+          <div class="price-note">Driver optional · 200km/day included</div>
+          <div class="card-divider"></div>
+          <ul class="card-features">
+            <li>Air Conditioning</li>
+            <li>Bluetooth Audio</li>
+            <li>Insurance Included</li>
+            <li>24/7 Roadside Support</li>
+            <li>GPS Navigation</li>
+            <li class="no">Driver Included</li>
+          </ul>
+          <a href="#" class="card-btn">Book This Vehicle</a>
+        </div>
+
+        <div class="price-card fade-up d2">
+          <div class="card-icon">🚐</div>
+          <div class="card-category">Minivan</div>
+          <div class="card-name">Honda Odyssey</div>
+          <div class="card-desc">
+            Spacious 7-seater for group travel, family trips and corporate
+            outings.
+          </div>
+          <div class="card-price">
+            <div class="price-num" data-daily="10,000" data-weekly="59,500">
+              KSh 10,000
+            </div>
+            <div class="price-period">/ day</div>
+          </div>
+          <div class="price-note">Driver optional · 200km/day included</div>
+          <div class="card-divider"></div>
+          <ul class="card-features">
+            <li>Air Conditioning</li>
+            <li>Bluetooth Audio</li>
+            <li>Insurance Included</li>
+            <li>24/7 Roadside Support</li>
+            <li>GPS Navigation</li>
+            <li class="no">Driver Included</li>
+          </ul>
+          <a href="#" class="card-btn">Book This Vehicle</a>
+        </div>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="category-label">Premium & Luxury</div>
+      <div class="pricing-grid">
+        <div class="price-card fade-up">
+          <div class="card-icon">🏆</div>
+          <div class="card-category">Luxury Sedan</div>
+          <div class="card-name">Mercedes-Benz E-Class</div>
+          <div class="card-desc">
+            Executive comfort for corporate meetings, airport pickups and VIP
+            events.
+          </div>
+          <div class="card-price">
+            <div class="price-num" data-daily="18,000" data-weekly="107,100">
+              KSh 18,000
+            </div>
+            <div class="price-period">/ day</div>
+          </div>
+          <div class="price-note">Driver included · 250km/day included</div>
+          <div class="card-divider"></div>
+          <ul class="card-features">
+            <li>Professional Driver</li>
+            <li>Climate Control</li>
+            <li>Insurance Included</li>
+            <li>24/7 Roadside Support</li>
+            <li>GPS Navigation</li>
+            <li>Leather Interior</li>
+          </ul>
+          <a href="#" class="card-btn">Book This Vehicle</a>
+        </div>
+
+        <div class="price-card fade-up d1">
+          <div class="card-icon">🛻</div>
+          <div class="card-category">Pickup Truck</div>
+          <div class="card-name">Ford Ranger</div>
+          <div class="card-desc">
+            Heavy-duty 4x4 for construction, safari and cross-country logistics.
+          </div>
+          <div class="card-price">
+            <div class="price-num" data-daily="15,000" data-weekly="89,250">
+              KSh 15,000
+            </div>
+            <div class="price-period">/ day</div>
+          </div>
+          <div class="price-note">Driver optional · 200km/day included</div>
+          <div class="card-divider"></div>
+          <ul class="card-features">
+            <li>4WD Capable</li>
+            <li>Air Conditioning</li>
+            <li>Insurance Included</li>
+            <li>24/7 Roadside Support</li>
+            <li>GPS Navigation</li>
+            <li>Roof Rack + Tow Bar</li>
+          </ul>
+          <a href="#" class="card-btn">Book This Vehicle</a>
+        </div>
+
+        <div class="price-card fade-up d2 featured">
+          <div class="featured-tag">Premium</div>
+          <div class="card-icon">👑</div>
+          <div class="card-category">Full-Size SUV</div>
+          <div class="card-name">Toyota Land Cruiser</div>
+          <div class="card-desc">
+            The ultimate all-terrain luxury SUV. Ideal for safaris and executive
+            use.
+          </div>
+          <div class="card-price">
+            <div class="price-num" data-daily="22,000" data-weekly="130,900">
+              KSh 22,000
+            </div>
+            <div class="price-period">/ day</div>
+          </div>
+          <div class="price-note">Driver included · Unlimited km</div>
+          <div class="card-divider"></div>
+          <ul class="card-features">
+            <li>Professional Driver</li>
+            <li>Climate Control</li>
+            <li>Insurance Included</li>
+            <li>24/7 Roadside Support</li>
+            <li>GPS Navigation</li>
+            <li>Leather + Off-Road Ready</li>
+          </ul>
+          <a href="#" class="card-btn">Book This Vehicle</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT'S INCLUDED -->
+    <div class="inclusions">
+      <div class="inclusions-inner">
+        <h3>Everything <em>Included</em> in Every Hire</h3>
+        <div class="inclusions-list">
+          <div class="inclusion-item">
+            <div class="inclusion-icon">🛡️</div>
+            <div class="inclusion-text">
+              <strong>Full Insurance</strong>
+              <span>Comprehensive cover on every vehicle, every trip</span>
+            </div>
+          </div>
+          <div class="inclusion-item">
+            <div class="inclusion-icon">🔧</div>
+            <div class="inclusion-text">
+              <strong>Roadside Assistance</strong>
+              <span>24/7 emergency support across Kenya</span>
+            </div>
+          </div>
+          <div class="inclusion-item">
+            <div class="inclusion-icon">✅</div>
+            <div class="inclusion-text">
+              <strong>Vehicle Inspection</strong>
+              <span>Fully serviced and inspected before every hire</span>
+            </div>
+          </div>
+          <div class="inclusion-item">
+            <div class="inclusion-icon">📍</div>
+            <div class="inclusion-text">
+              <strong>Free Delivery</strong>
+              <span>Vehicle delivered to your location in Nairobi</span>
+            </div>
+          </div>
+          <div class="inclusion-item">
+            <div class="inclusion-icon">📞</div>
+            <div class="inclusion-text">
+              <strong>Dedicated Support</strong>
+              <span>Direct line to your concierge throughout the hire</span>
+            </div>
+          </div>
+          <div class="inclusion-item">
+            <div class="inclusion-icon">🧾</div>
+            <div class="inclusion-text">
+              <strong>No Hidden Fees</strong>
+              <span>All taxes and levies included in quoted price</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADD-ONS -->
+    <div class="addons-section">
+      <div class="category-label">Optional Add-Ons</div>
+      <div class="addons-grid">
+        <div class="addon-card">
+          <div class="addon-icon">👨‍✈️</div>
+          <div class="addon-name">Professional Driver</div>
+          <div class="addon-desc">
+            Licensed, vetted driver with local route knowledge
+          </div>
+          <div class="addon-price">KSh 3,000 <span>/ day</span></div>
+        </div>
+        <div class="addon-card">
+          <div class="addon-icon">🌐</div>
+          <div class="addon-name">Wi-Fi Hotspot</div>
+          <div class="addon-desc">
+            Portable 4G hotspot for seamless connectivity on the road
+          </div>
+          <div class="addon-price">KSh 500 <span>/ day</span></div>
+        </div>
+        <div class="addon-card">
+          <div class="addon-icon">🧳</div>
+          <div class="addon-name">Roof Luggage Rack</div>
+          <div class="addon-desc">
+            Extra cargo space for safaris and long haul trips
+          </div>
+          <div class="addon-price">KSh 800 <span>/ day</span></div>
+        </div>
+        <div class="addon-card">
+          <div class="addon-icon">🗺️</div>
+          <div class="addon-name">Cross-Border Permit</div>
+          <div class="addon-desc">
+            Travel permits for Uganda, Tanzania and Rwanda
+          </div>
+          <div class="addon-price">KSh 5,000 <span>/ trip</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <div class="faq-header">
+        <div class="category-label">Common Questions</div>
+        <h2
+          style="
+            font-family: &quot;Playfair Display&quot;, serif;
+            font-size: 32px;
+            font-weight: 700;
+          "
+        >
+          Frequently Asked Questions
+        </h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            What documents do I need to rent? <span class="faq-plus">+</span>
+          </div>
+          <div class="faq-a">
+            You need a valid national ID or passport, a valid driving licence
+            (at least 2 years old), and a deposit refundable at return. Foreign
+            licences are accepted for visitors.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            Is fuel included in the price? <span class="faq-plus">+</span>
+          </div>
+          <div class="faq-a">
+            Fuel is not included. Vehicles are provided with a full tank and
+            must be returned full. We can arrange fuelling on request at
+            standard pump prices.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            What happens if I exceed the daily km limit?
+            <span class="faq-plus">+</span>
+          </div>
+          <div class="faq-a">
+            Extra kilometres are charged at KSh 30/km for economy class and KSh
+            50/km for premium and luxury vehicles. We recommend our weekly rate
+            for longer trips.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            Can I pay via M-Pesa? <span class="faq-plus">+</span>
+          </div>
+          <div class="faq-a">
+            Yes. We accept M-Pesa, bank transfer, Visa, and Mastercard. A 50%
+            deposit is required at booking with the balance due at vehicle
+            collection.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            What is the cancellation policy? <span class="faq-plus">+</span>
+          </div>
+          <div class="faq-a">
+            Free cancellation up to 24 hours before pickup. Cancellations within
+            24 hours forfeit the deposit. No-shows are charged the full day
+            rate.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">
+            Can vehicles travel outside Nairobi? <span class="faq-plus">+</span>
+          </div>
+          <div class="faq-a">
+            Yes — all vehicles can travel anywhere in Kenya. Cross-border travel
+            to Uganda, Tanzania and Rwanda requires a permit add-on booked in
+            advance.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <h2>Ready to <em>Hit the Road?</em></h2>
+      <p>
+        Browse our full fleet or speak directly to our concierge team for a
+        custom quote.
+      </p>
+      <div class="cta-buttons">
+        <a href="#" class="btn-primary">View Full Fleet</a>
+        <a href="tel:+254700123456" class="btn-secondary">Call Us Now</a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>© 2026 Murecar Logistics. All rights reserved.</span>
+      <span
+        >📍 Nairobi, Kenya · <a href="tel:+254700123456">+254 700 123 456</a> ·
+        <a href="mailto:info@murecar.com">info@murecar.com</a></span
+      >
+    </footer>
+
+    <!-- WHATSAPP -->
+    <div
+      class="wa-float"
+      onclick="window.open('https://wa.me/254700123456', '_blank')"
+    >
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </svg>
+    </div>
+
+    <script>
+      // Billing toggle
+      let isWeekly = false;
+      function toggleBilling() {
+        isWeekly = !isWeekly;
+        const toggle = document.getElementById("billingToggle");
+        const lblDaily = document.getElementById("lbl-daily");
+        const lblWeekly = document.getElementById("lbl-weekly");
+        toggle.classList.toggle("on", isWeekly);
+        lblDaily.classList.toggle("active", !isWeekly);
+        lblWeekly.classList.toggle("active", isWeekly);
+        document.querySelectorAll(".price-num").forEach((el) => {
+          const daily = el.dataset.daily;
+          const weekly = el.dataset.weekly;
+          if (isWeekly) {
+            el.textContent = "KSh " + weekly;
+            el.nextElementSibling.textContent = "/ week";
+          } else {
+            el.textContent = "KSh " + daily;
+            el.nextElementSibling.textContent = "/ day";
+          }
+        });
+      }
+
+      // FAQ toggle
+      function toggleFaq(el) {
+        const isOpen = el.classList.contains("open");
+        document
+          .querySelectorAll(".faq-item")
+          .forEach((i) => i.classList.remove("open"));
+        if (!isOpen) el.classList.add("open");
+      }
+    </script>
+  </body>
+</html>
+
+<!-- BILLING TOGGLE -->
+<div class="mc-toggle-section">
+  <span class="mc-toggle-label active" id="mc-lbl-daily">Daily Rate</span>
+  <div class="mc-toggle" id="mcBillingToggle" onclick="mcToggleBilling()">
+    <div class="mc-toggle-knob"></div>
+  </div>
+  <span class="mc-toggle-label" id="mc-lbl-weekly">Weekly Rate</span>
+  <span class="mc-save-badge">SAVE 15%</span>
+</div>
+
+<!-- ECONOMY & COMPACT -->
+<div class="mc-pricing-wrap">
+  <div class="mc-category-label">Economy &amp; Compact</div>
+  <div class="mc-pricing-grid">
+    <div class="mc-price-card">
+      <div class="mc-card-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#E8650A"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 13l1-3 2-3h12l2 3 1 3" />
+          <circle cx="7.5" cy="17.5" r="2.5" />
+          <circle cx="16.5" cy="17.5" r="2.5" />
+          <path d="M5 13h14" />
+        </svg>
+      </div>
+      <div class="mc-card-category">Economy</div>
+      <div class="mc-card-name">Toyota Corolla</div>
+      <div class="mc-card-desc">
+        Perfect for city errands and airport transfers. Fuel-efficient and
+        reliable.
+      </div>
+      <div class="mc-card-price">
+        <span
+          class="mc-price-num"
+          data-daily="KSh 5,000"
+          data-weekly="KSh 29,750"
+          >KSh 5,000</span
+        >
+        <span class="mc-price-period">/ day</span>
+      </div>
+      <div class="mc-price-note">Driver optional · 150km/day included</div>
+      <div class="mc-card-divider"></div>
+      <ul class="mc-card-features">
+        <li>Air Conditioning</li>
+        <li>Bluetooth Audio</li>
+        <li>Insurance Included</li>
+        <li>24/7 Roadside Support</li>
+        <li class="mc-no">GPS Navigation</li>
+        <li class="mc-no">Driver Included</li>
+      </ul>
+      <a href="#" class="mc-card-btn">Book This Vehicle</a>
+    </div>
+
+    <div class="mc-price-card mc-featured">
+      <div class="mc-featured-tag">Most Popular</div>
+      <div class="mc-card-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#E8650A"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 13l1-3 2-3h12l2 3 1 3" />
+          <circle cx="7.5" cy="17.5" r="2.5" />
+          <circle cx="16.5" cy="17.5" r="2.5" />
+          <path d="M5 13h14" />
+        </svg>
+      </div>
+      <div class="mc-card-category">Compact SUV</div>
+      <div class="mc-card-name">Toyota RAV4</div>
+      <div class="mc-card-desc">
+        Versatile city and highway SUV, great for families and business travel.
+      </div>
+      <div class="mc-card-price">
+        <span
+          class="mc-price-num"
+          data-daily="KSh 8,500"
+          data-weekly="KSh 50,575"
+          >KSh 8,500</span
+        >
+        <span class="mc-price-period">/ day</span>
+      </div>
+      <div class="mc-price-note">Driver optional · 200km/day included</div>
+      <div class="mc-card-divider"></div>
+      <ul class="mc-card-features">
+        <li>Air Conditioning</li>
+        <li>Bluetooth Audio</li>
+        <li>Insurance Included</li>
+        <li>24/7 Roadside Support</li>
+        <li>GPS Navigation</li>
+        <li class="mc-no">Driver Included</li>
+      </ul>
+      <a href="#" class="mc-card-btn">Book This Vehicle</a>
+    </div>
+
+    <div class="mc-price-card">
+      <div class="mc-card-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#E8650A"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="1" y="10" width="22" height="9" rx="1" />
+          <path d="M5 10V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3" />
+          <circle cx="7" cy="19" r="2" />
+          <circle cx="17" cy="19" r="2" />
+        </svg>
+      </div>
+      <div class="mc-card-category">Minivan</div>
+      <div class="mc-card-name">Honda Odyssey</div>
+      <div class="mc-card-desc">
+        Spacious 7-seater for group travel, family trips and corporate outings.
+      </div>
+      <div class="mc-card-price">
+        <span
+          class="mc-price-num"
+          data-daily="KSh 10,000"
+          data-weekly="KSh 59,500"
+          >KSh 10,000</span
+        >
+        <span class="mc-price-period">/ day</span>
+      </div>
+      <div class="mc-price-note">Driver optional · 200km/day included</div>
+      <div class="mc-card-divider"></div>
+      <ul class="mc-card-features">
+        <li>Air Conditioning</li>
+        <li>Bluetooth Audio</li>
+        <li>Insurance Included</li>
+        <li>24/7 Roadside Support</li>
+        <li>GPS Navigation</li>
+        <li class="mc-no">Driver Included</li>
+      </ul>
+      <a href="#" class="mc-card-btn">Book This Vehicle</a>
+    </div>
+  </div>
+
+  <!-- PREMIUM & LUXURY -->
+  <div class="mc-category-label">Premium &amp; Luxury</div>
+  <div class="mc-pricing-grid">
+    <div class="mc-price-card">
+      <div class="mc-card-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#E8650A"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="8" r="6" />
+          <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+        </svg>
+      </div>
+      <div class="mc-card-category">Luxury Sedan</div>
+      <div class="mc-card-name">Mercedes-Benz E-Class</div>
+      <div class="mc-card-desc">
+        Executive comfort for corporate meetings, airport pickups and VIP
+        events.
+      </div>
+      <div class="mc-card-price">
+        <span
+          class="mc-price-num"
+          data-daily="KSh 18,000"
+          data-weekly="KSh 107,100"
+          >KSh 18,000</span
+        >
+        <span class="mc-price-period">/ day</span>
+      </div>
+      <div class="mc-price-note">Driver included · 250km/day included</div>
+      <div class="mc-card-divider"></div>
+      <ul class="mc-card-features">
+        <li>Professional Driver</li>
+        <li>Climate Control</li>
+        <li>Insurance Included</li>
+        <li>24/7 Roadside Support</li>
+        <li>GPS Navigation</li>
+        <li>Leather Interior</li>
+      </ul>
+      <a href="#" class="mc-card-btn">Book This Vehicle</a>
+    </div>
+
+    <div class="mc-price-card">
+      <div class="mc-card-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#E8650A"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 13l1-3 2-3h12l2 3 1 3" />
+          <circle cx="7.5" cy="17.5" r="2.5" />
+          <circle cx="16.5" cy="17.5" r="2.5" />
+          <path d="M5 13h14" />
+        </svg>
+      </div>
+      <div class="mc-card-category">Pickup Truck</div>
+      <div class="mc-card-name">Ford Ranger</div>
+      <div class="mc-card-desc">
+        Heavy-duty 4x4 for construction, safari and cross-country logistics.
+      </div>
+      <div class="mc-card-price">
+        <span
+          class="mc-price-num"
+          data-daily="KSh 15,000"
+          data-weekly="KSh 89,250"
+          >KSh 15,000</span
+        >
+        <span class="mc-price-period">/ day</span>
+      </div>
+      <div class="mc-price-note">Driver optional · 200km/day included</div>
+      <div class="mc-card-divider"></div>
+      <ul class="mc-card-features">
+        <li>4WD Capable</li>
+        <li>Air Conditioning</li>
+        <li>Insurance Included</li>
+        <li>24/7 Roadside Support</li>
+        <li>GPS Navigation</li>
+        <li>Roof Rack + Tow Bar</li>
+      </ul>
+      <a href="#" class="mc-card-btn">Book This Vehicle</a>
+    </div>
+
+    <div class="mc-price-card mc-featured">
+      <div class="mc-featured-tag">Premium</div>
+      <div class="mc-card-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#E8650A"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z" />
+        </svg>
+      </div>
+      <div class="mc-card-category">Full-Size SUV</div>
+      <div class="mc-card-name">Toyota Land Cruiser</div>
+      <div class="mc-card-desc">
+        The ultimate all-terrain luxury SUV. Ideal for safaris and executive
+        use.
+      </div>
+      <div class="mc-card-price">
+        <span
+          class="mc-price-num"
+          data-daily="KSh 22,000"
+          data-weekly="KSh 130,900"
+          >KSh 22,000</span
+        >
+        <span class="mc-price-period">/ day</span>
+      </div>
+      <div class="mc-price-note">Driver included · Unlimited km</div>
+      <div class="mc-card-divider"></div>
+      <ul class="mc-card-features">
+        <li>Professional Driver</li>
+        <li>Climate Control</li>
+        <li>Insurance Included</li>
+        <li>24/7 Roadside Support</li>
+        <li>GPS Navigation</li>
+        <li>Leather + Off-Road Ready</li>
+      </ul>
+      <a href="#" class="mc-card-btn">Book This Vehicle</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ── TOGGLE ── */
+  .mc-toggle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    padding: 40px 0 32px;
+    flex-wrap: wrap;
+  }
+  .mc-toggle-label {
+    font-family:
+      "DM Sans",
+      -apple-system,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.2s;
+  }
+  .mc-toggle-label.active {
+    color: #ffffff;
+  }
+
+  .mc-toggle {
+    width: 52px;
+    height: 26px;
+    background: #242424;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 13px;
+    position: relative;
+    cursor: pointer;
+    transition:
+      background 0.3s,
+      border-color 0.3s;
+  }
+  .mc-toggle.on {
+    background: #e8650a;
+    border-color: #e8650a;
+  }
+  .mc-toggle-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.3s;
+  }
+  .mc-toggle.on .mc-toggle-knob {
+    transform: translateX(26px);
+  }
+
+  .mc-save-badge {
+    background: rgba(232, 101, 10, 0.12);
+    border: 1px solid #e8650a;
+    color: #e8650a;
+    font-family:
+      "DM Sans",
+      -apple-system,
+      sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    letter-spacing: 1.5px;
+  }
+
+  /* ── WRAPPER ── */
+  .mc-pricing-wrap {
+    width: 100%;
+  }
+
+  /* ── CATEGORY LABEL ── */
+  .mc-category-label {
+    font-family:
+      "DM Sans",
+      -apple-system,
+      sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #e8650a;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mc-category-label::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: #e8650a;
+    flex-shrink: 0;
+  }
+
+  /* ── GRID ── */
+  .mc-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.07);
+    margin-bottom: 48px;
+  }
+
+  /* ── CARD ── */
+  .mc-price-card {
+    background: #111111;
+    padding: 32px 28px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .mc-price-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: transparent;
+    transition: background 0.3s;
+  }
+  .mc-price-card:hover {
+    background: #161616;
+  }
+  .mc-price-card:hover::before {
+    background: #e8650a;
+  }
+
+  .mc-price-card.mc-featured {
+    background: #161616;
+  }
+  .mc-price-card.mc-featured::before {
+    background: linear-gradient(90deg, #e8650a, #ff7a1a);
+  }
+
+  .mc-featured-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #e8650a;
+    color: #fff;
+    font-family:
+      "DM Sans",
+      -apple-system,
+      sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+  }
+
+  /* icon */
+  .mc-card-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(232, 101, 10, 0.08);
+    border: 1px solid rgba(232, 101, 10, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    transition:
+      background 0.3s,
+      border-color 0.3s;
+  }
+  .mc-price-card:hover .mc-card-icon {
+    background: rgba(232, 101, 10, 0.16);
+    border-color: #e8650a;
+  }
+  .mc-card-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mc-card-category {
+    font-family:
+      "DM Sans",
+      -apple-system,
+      sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e8650a;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .mc-card-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .mc-card-desc {
+    font-family:
+      "DM Sans",
+      -apple-system,
+      sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .mc-card-price {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .mc-price-num {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #e8650a;
+    line-height: 1;
+  }
+  .mc-price-period {
+    font-family:
+      "DM Sans",
+      -apple-system,
+      sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 4px;
+  }
+  .mc-price-note {
+    font-family:
+      "DM Sans",
+      -apple-system,
+      sans-serif;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 20px;
+  }
+
+  .mc-card-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+    margin-bottom: 18px;
+  }
+
+  .mc-card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    flex: 1;
+  }
+  .mc-card-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family:
+      "DM Sans",
+      -apple-system,
+      sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .mc-card-features li:last-child {
+    border-bottom: none;
+  }
+  .mc-card-features li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #e8650a;
+    flex-shrink: 0;
+  }
+  .mc-card-features li.mc-no {
+    color: rgba(255, 255, 255, 0.2);
+    text-decoration: line-through;
+  }
+  .mc-card-features li.mc-no::before {
+    background: #333;
+  }
+
+  .mc-card-btn {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.55);
+    padding: 13px;
+    font-family:
+      "DM Sans",
+      -apple-system,
+      sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.25s;
+    margin-top: auto;
+  }
+  .mc-card-btn:hover,
+  .mc-price-card.mc-featured .mc-card-btn {
+    background: #e8650a;
+    border-color: #e8650a;
+    color: #fff;
+  }
+  .mc-price-card.mc-featured .mc-card-btn:hover {
+    background: #ff7a1a;
+    border-color: #ff7a1a;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 992px) {
+    .mc-pricing-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .mc-pricing-grid {
+      grid-template-columns: 1fr;
+    }
+    .mc-price-card {
+      padding: 24px 20px 28px;
+    }
+  }
+</style>
+
+<script>
+  var mcIsWeekly = false;
+  function mcToggleBilling() {
+    mcIsWeekly = !mcIsWeekly;
+    var toggle = document.getElementById("mcBillingToggle");
+    var lblDaily = document.getElementById("mc-lbl-daily");
+    var lblWeekly = document.getElementById("mc-lbl-weekly");
+    toggle.classList.toggle("on", mcIsWeekly);
+    lblDaily.classList.toggle("active", !mcIsWeekly);
+    lblWeekly.classList.toggle("active", mcIsWeekly);
+    document.querySelectorAll(".mc-price-num").forEach(function (el) {
+      el.textContent = mcIsWeekly ? el.dataset.weekly : el.dataset.daily;
+      el.nextElementSibling.textContent = mcIsWeekly ? "/ week" : "/ day";
+    });
+  }
+</script>
